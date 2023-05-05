@@ -1,15 +1,15 @@
+import { FC, PropsWithChildren } from 'react';
 import './Button.scss';
 
-interface ButtonProps {
+interface IButtonProps {
   children: React.ReactNode;
-  disabled?: boolean;
   onClick?: () => void;
 }
 
-const Button = (props: ButtonProps) => {
+const Button: FC<PropsWithChildren<IButtonProps>> = ({ children, onClick }) => {
   return (
-    <button className="button" onClick={props.onClick}>
-      {props.children}
+    <button className="button" onClick={onClick}>
+      {children}
     </button>
   );
 };

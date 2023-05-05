@@ -1,5 +1,8 @@
 import { FC } from 'react';
+import Header from './components/Header/Header';
 
-const App: FC = () => <h1>Hello RS School!</h1>;
+const App: FC = () => {
+  return <Header />;
+};
 
 export default App;

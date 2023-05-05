@@ -22,13 +22,13 @@ const Welcome = () => {
             <button>Try out</button>
           </div>
 
-          <div className="welcome__developers developers">
-            <h2 className="developers__title"></h2>
-            <ul className="developers__list">
+          <div className="welcome__developers dev">
+            <h2 className="dev__title">Developers</h2>
+            <ul className="dev__list">
               {developers.map((item) => (
-                <li key={item.id} className="developers__item">
-                  <img className="developers__img" src={item.img} alt="dev" />
-                  <p>{item.name}</p>
+                <li key={item.id} className="dev__item">
+                  <img className="dev__img" src={item.img} alt="dev" />
+                  <p className="dev__name">{item.name}</p>
                 </li>
               ))}
             </ul>

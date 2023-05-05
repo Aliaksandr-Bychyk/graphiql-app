@@ -1,15 +1,5 @@
 import { FC } from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 
-const App: FC = () => {
-  return (
-    <>
-      <Header />
-      <div style={{ height: '500px' }}>page</div>
-      <Footer />
-    </>
-  );
-};
+const App: FC = () => <h1>Hello RS School!</h1>;
 
 export default App;

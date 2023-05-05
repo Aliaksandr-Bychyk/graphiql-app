@@ -1,9 +1,18 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
 
 const Header: FC = () => {
   const isUserAuth = true;
+
+  useEffect(() => {
+    window.onscroll = () => {
+      const currentScroll = window.pageYOffset;
+      const header = document.querySelector('header') as HTMLElement;
+      currentScroll > 1 ? header.classList.add('sticky') : header.classList.remove('sticky');
+    };
+  }, []);
+
   return (
     <header className="header">
       <div className="container header__container">

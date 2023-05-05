@@ -2,7 +2,6 @@ import { FC, PropsWithChildren } from 'react';
 import './Button.scss';
 
 interface IButtonProps {
-  children: React.ReactNode;
   onClick?: () => void;
 }
 

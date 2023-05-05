@@ -5,7 +5,13 @@ import './Header.scss';
 const Header: FC = () => {
   return (
     <header className="header">
-      <div className="container">
+      <div className="container header__container">
+        <select className="header__lang">
+          <option value="en" defaultChecked>
+            EN
+          </option>
+          <option value="ru">RU</option>
+        </select>
         <div className="header__buttons">
           <Button>Sign up</Button>
           <Button>Sign in</Button>

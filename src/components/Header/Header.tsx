@@ -5,9 +5,11 @@ import './Header.scss';
 const Header: FC = () => {
   return (
     <header className="header">
-      <div className="header__buttons">
-        <Button>Sign up</Button>
-        <Button>Sign in</Button>
+      <div className="container">
+        <div className="header__buttons">
+          <Button>Sign up</Button>
+          <Button>Sign in</Button>
+        </div>
       </div>
     </header>
   );

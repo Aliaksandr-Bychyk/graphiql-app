@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: #383d5b;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+    color: #060f2f;
+    align-items: center;
+  }
+
+  &__lang {
+    height: 37px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #b4c3db;
+    color: #060f2f;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  height: 60px;
+  transition: all 0.5s ease;
+  background-color: rgba(56, 61, 91, 0.5);
+}

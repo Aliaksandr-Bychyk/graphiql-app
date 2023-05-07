@@ -1,10 +1,14 @@
 import { FC } from 'react';
 import Welcome from './components/Welcome/Welcome';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 const App: FC = () => (
-  <h1>
+  <>
+    <Header />
     <Welcome />
-  </h1>
+    <Footer />
+  </>
 );
 
 export default App;

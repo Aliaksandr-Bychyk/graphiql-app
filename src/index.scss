@@ -10,7 +10,25 @@
   -webkit-text-size-adjust: 100%;
 }
 
-ul,
-li {
-  list-style: none;
+body {
+  margin: 0;
+  box-sizing: border-box;
+  height: 2000px;
+}
+
+html {
+  font-size: 16px;
+  color: #f4f6f8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0 100px;
 }

@@ -8,7 +8,7 @@ const NorFoundPage: FC = () => {
       <div className="container">
         <h1 className="not-found__title">404</h1>
         <h2 className="not-found__subtitle">Oops! The page can&apos;t be found</h2>
-        <Button>Back to the Welcome Page</Button>
+        <Button className={'not-found__btn'}>Back to the Welcome Page</Button>
       </div>
     </div>
   );

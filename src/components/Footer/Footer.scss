@@ -1,7 +1,9 @@
+@import '../../variables.scss';
+
 .footer {
   width: 100%;
   height: 215px;
-  background-color: #383d5b;
+  background-color: $block-color;
 
   &__container {
     margin: auto;

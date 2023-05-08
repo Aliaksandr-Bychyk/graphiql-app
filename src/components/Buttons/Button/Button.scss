@@ -1,25 +1,28 @@
+@import '../../../variables.scss';
+
 .button {
   padding: 9px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: #b4c3db;
-  color: #060f2f;
+  border: none;
+  background-color: $button-color;
+  color: $main-bg-color;
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
 
   &:hover {
     background-color: transparent;
-    border: 3px solid #b4c3db;
-    color: #f4f6f8;
+    border: 3px solid $button-color;
+    color: $light-color;
     transition: 0.4s all ease;
   }
 
   &:disabled {
     background-color: rgba(180, 195, 219, 0.5);
-    color: #060f2f;
+    color: $main-bg-color;
     border: none;
     cursor: default;
   }

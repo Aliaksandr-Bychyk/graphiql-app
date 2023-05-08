@@ -1,6 +1,8 @@
+@import '../../variables.scss';
+
 .not-found {
   padding: 100px 0;
-  background-color: #060f2f;
+  background-color: $main-bg-color;
 
   &__title {
     text-align: center;

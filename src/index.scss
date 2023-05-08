@@ -13,7 +13,6 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  height: 2000px;
 }
 
 html {
@@ -24,6 +23,16 @@ html {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  background: transparent;
+  border: none;
 }
 
 .container {

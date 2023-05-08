@@ -3,4 +3,23 @@
 .auth-reg {
   min-height: 100vh;
   background-color: $main-bg-color;
+
+  &__wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0 0 50px;
+    font-size: 42px;
+  }
+}
+
+.reg__form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }

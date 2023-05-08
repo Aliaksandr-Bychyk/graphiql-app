@@ -1,0 +1,24 @@
+@import '../../variables.scss';
+
+.not-found {
+  padding: 100px 0;
+  background-color: $main-bg-color;
+
+  &__title {
+    text-align: center;
+    font-size: 170px;
+    line-height: 1;
+    margin: 0;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 100px;
+  }
+
+  &__btn {
+    margin: auto;
+  }
+}

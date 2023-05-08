@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Button from '../../components/Buttons/Button/Button';
 import './404Page.scss';
 
-const NorFoundPage: FC = () => {
+const NotFoundPage: FC = () => {
   return (
     <div className="not-found">
       <div className="container">
@@ -14,4 +14,4 @@ const NorFoundPage: FC = () => {
   );
 };
 
-export default NorFoundPage;
+export default NotFoundPage;

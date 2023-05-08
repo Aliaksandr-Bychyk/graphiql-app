@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import TextInput from '../../components/Inputs/TextInput/TextInput';
+import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
 
 const AuthRegPage: FC = () => {
@@ -14,8 +15,9 @@ const AuthRegPage: FC = () => {
             <form className="reg__form">
               <TextInput type="email" placehilder="Email..." />
               <TextInput type="text" placehilder="Password..." />
+              <SubmitInput disabled={false} />
             </form>
-            <div className="reg__question">Do you already have an account? Sing In.</div>
+            <div className="reg__question">Do you already have an account? Sing In</div>
           </div>
         ) : (
           <div className="auth-reg__wrapper">
@@ -23,6 +25,7 @@ const AuthRegPage: FC = () => {
             <form className="auth__form">
               <TextInput type="email" placehilder="Email..." />
               <TextInput type="text" placehilder="Password..." />
+              <SubmitInput disabled={false} />
             </form>
           </div>
         )}

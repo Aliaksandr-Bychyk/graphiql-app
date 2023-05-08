@@ -6,7 +6,7 @@ import NursIcon from '@/assets/Nurs.png';
 
 import './Welcome.scss';
 
-const Welcome = () => {
+const WelcomePage = () => {
   const developers = [
     { id: 1, name: 'Aliaksandr Bychyk', img: AlexIcon },
     { id: 2, name: 'Viktoria Kondrashova', img: VikaIcon },
@@ -44,4 +44,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default WelcomePage;

@@ -16,10 +16,20 @@
     margin: 0 0 50px;
     font-size: 42px;
   }
-}
 
-.reg__form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__question {
+    margin: 20px 0 0 0;
+  }
+
+  &__link {
+    cursor: pointer;
+    color: $button-color;
+    font-weight: 700;
+  }
 }

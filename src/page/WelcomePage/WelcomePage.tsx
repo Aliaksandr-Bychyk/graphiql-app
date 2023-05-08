@@ -1,4 +1,4 @@
-import Button from '../Buttons/Button/Button';
+import Button from '@/components/Buttons/Button/Button';
 import WelcomeLogo from '@/assets/main.png';
 import AlexIcon from '@/assets/Alex.png';
 import VikaIcon from '@/assets/Vika.png';

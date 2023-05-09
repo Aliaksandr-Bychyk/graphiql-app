@@ -1,37 +1,38 @@
-import { FC } from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { FormInputs } from '../../../pages/AuthRegPage/AuthRegPage';
+import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form';
 import './TextInput.scss';
 
-interface ITextInputProps {
-  type: string;
-  placehilder: string;
-  register: UseFormRegister<FormInputs>;
-  errors: FieldErrors;
+interface ITextInputProps<T extends FieldValues> {
+  name: Path<T>;
+  placeholder: string;
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
 }
 
 const regExp = new RegExp('(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-#$.%&@!+=<>*])');
 
-const TextInput: FC<ITextInputProps> = ({ type, placehilder, register, errors }) => {
+const TextInput = <T extends FieldValues>({
+  name,
+  placeholder,
+  register,
+  errors,
+}: ITextInputProps<T>) => {
   return (
-    <label htmlFor={type}>
+    <label htmlFor={name}>
       <input
-        type={type}
+        type={name === 'email' ? 'email' : 'text'}
         className="text-input"
-        id={type}
-        // name={type}
-        placeholder={placehilder}
-        {...register(type, {
+        id={name}
+        placeholder={placeholder}
+        {...register(name, {
           required: 'Value is required',
           minLength: { value: 8, message: 'Value should be at least 8 chars' },
           validate: (value: string) =>
-            value.match(regExp) ||
-            'Value should contain at least 1 letter, 1 digit, 1 special char',
+            regExp.test(value) || 'Value should contain at least 1 letter, 1 digit, 1 special char',
         })}
       />
-      {errors[type] && (
+      {errors[name] && (
         <p role="alert" className="text-input__error">
-          {errors[type]?.message?.toString()}
+          {errors[name]?.message?.toString()}
         </p>
       )}
     </label>

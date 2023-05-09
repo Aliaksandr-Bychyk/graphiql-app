@@ -32,10 +32,10 @@ const AuthRegPage: FC = () => {
           <div className="auth-reg__wrapper">
             <h1 className="auth-reg__title">Sign Up</h1>
             <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput type="email" placehilder="Email..." register={register} errors={errors} />
+              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
               <TextInput
-                type="text"
-                placehilder="Password..."
+                name="password"
+                placeholder="Password..."
                 register={register}
                 errors={errors}
               />
@@ -52,14 +52,14 @@ const AuthRegPage: FC = () => {
           <div className="auth-reg__wrapper">
             <h1 className="auth-reg__title">Sign In</h1>
             <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput type="email" placehilder="Email..." register={register} errors={errors} />
+              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
               <TextInput
-                type="text"
-                placehilder="Password..."
+                name="password"
+                placeholder="Password..."
                 register={register}
                 errors={errors}
               />
-              <SubmitInput disabled={true} />
+              <SubmitInput disabled={false} />
             </form>
           </div>
         )}

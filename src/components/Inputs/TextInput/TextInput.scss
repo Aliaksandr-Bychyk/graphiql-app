@@ -3,6 +3,8 @@
 .text-input {
   margin: auto;
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   background-color: $light-color;
   border-radius: 20px;

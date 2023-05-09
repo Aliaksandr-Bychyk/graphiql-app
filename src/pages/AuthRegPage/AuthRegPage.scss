@@ -31,5 +31,10 @@
     cursor: pointer;
     color: $button-color;
     font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+      transition: 0.4s all ease;
+    }
   }
 }

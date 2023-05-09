@@ -19,26 +19,20 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-export function signUp(email: string, password: string) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential;
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+export async function signUp(email: string, password: string) {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export function signIn(email: string, password: string) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential;
-      console.log(user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+export async function signIn(email: string, password: string) {
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function logOut() {

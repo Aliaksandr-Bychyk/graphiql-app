@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export interface FormInputs {
   email: string;
@@ -19,7 +20,9 @@ const AuthRegPage: FC = () => {
     reValidateMode: 'onSubmit',
   });
 
-  const [isReg, setIsReg] = useState<boolean>(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isReg = location.pathname === '/sign-up';
 
   const onSubmit = () => {
     //do something
@@ -43,7 +46,7 @@ const AuthRegPage: FC = () => {
           {isReg && (
             <div className="auth-reg__question">
               Do you already have an account?&nbsp;
-              <span className="auth-reg__link" onClick={() => setIsReg(false)}>
+              <span className="auth-reg__link" onClick={() => navigate('/sign-in')}>
                 Sing In
               </span>
             </div>

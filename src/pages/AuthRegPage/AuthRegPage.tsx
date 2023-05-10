@@ -28,41 +28,27 @@ const AuthRegPage: FC = () => {
   return (
     <div className="auth-reg">
       <div className="container">
-        {isReg ? (
-          <div className="auth-reg__wrapper">
-            <h1 className="auth-reg__title">Sign Up</h1>
-            <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
-              <TextInput
-                name="password"
-                placeholder="Password..."
-                register={register}
-                errors={errors}
-              />
-              <SubmitInput disabled={false} />
-            </form>
+        <div className="auth-reg__wrapper">
+          <h1 className="auth-reg__title">{isReg ? 'Sign Up' : 'Sign In'}</h1>
+          <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
+            <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
+            <TextInput
+              name="password"
+              placeholder="Password..."
+              register={register}
+              errors={errors}
+            />
+            <SubmitInput disabled={false} />
+          </form>
+          {isReg && (
             <div className="auth-reg__question">
-              Do you already have an account?{' '}
+              Do you already have an account?&nbsp;
               <span className="auth-reg__link" onClick={() => setIsReg(false)}>
                 Sing In
               </span>
             </div>
-          </div>
-        ) : (
-          <div className="auth-reg__wrapper">
-            <h1 className="auth-reg__title">Sign In</h1>
-            <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
-              <TextInput
-                name="password"
-                placeholder="Password..."
-                register={register}
-                errors={errors}
-              />
-              <SubmitInput disabled={false} />
-            </form>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

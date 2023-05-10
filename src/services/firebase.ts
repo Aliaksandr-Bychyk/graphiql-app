@@ -30,6 +30,7 @@ export async function signUp(email: string, password: string) {
 export async function signIn(email: string, password: string) {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }

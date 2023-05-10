@@ -4,7 +4,7 @@ import AlexIcon from '@/assets/Alex.png';
 import VikaIcon from '@/assets/Vika.png';
 import NursIcon from '@/assets/Nurs.png';
 
-import './Welcome.scss';
+import './WelcomePage.scss';
 
 const WelcomePage = () => {
   const developers = [

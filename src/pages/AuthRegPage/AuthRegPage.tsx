@@ -4,7 +4,7 @@ import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
 
-export interface FormInputs {
+export interface IFormInputs {
   email: string;
   password: string;
 }
@@ -14,7 +14,7 @@ const AuthRegPage: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputs>({
+  } = useForm<IFormInputs>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
   });

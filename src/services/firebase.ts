@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 export const firebaseConfig = {
@@ -42,4 +43,15 @@ export function logOut() {
     .catch((error) => {
       console.log(error);
     });
+}
+
+export function isUser() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log('зашел');
+      // ...
+    } else {
+      console.log('вышел');
+    }
+  });
 }

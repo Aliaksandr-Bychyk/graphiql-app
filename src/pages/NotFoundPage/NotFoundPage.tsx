@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Button from '../../components/Buttons/Button/Button';
-import './404Page.scss';
+import './NotFoundPage.scss';
 
 const NotFoundPage: FC = () => {
   return (

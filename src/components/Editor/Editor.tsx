@@ -7,31 +7,32 @@ import './Editor.scss';
 
 interface IEditorProps {
   title: string;
-  handleChange: () => void;
+  onChange: (value: string) => void;
   value: string;
 }
 
-const Editor: FC<IEditorProps> = ({ title, handleChange, value }) => {
+const Editor: FC<IEditorProps> = ({ title, onChange, value }) => {
+  const handleChange = (_editor: ControlledEditor, _data: object, value: string) => onChange(value);
+
   return (
     <div className="editor">
       <div className="editor__header">
         <h3 className="editor__title">{title}</h3>
       </div>
-      <div className="editor__body">
-        <ControlledEditor
-          onBeforeChange={handleChange}
-          value={value}
-          className="code-mirror-wrapper"
-          options={{
-            lineWrapping: true,
-            lint: true,
-            mode: 'text/javascript',
-            theme: 'material',
-            lineNumbers: true,
-            tabSize: 2,
-          }}
-        />
-      </div>
+      <ControlledEditor
+        onBeforeChange={handleChange}
+        value={value}
+        className="editor__body"
+        options={{
+          lineWrapping: true,
+          lint: true,
+          mode: 'javascript',
+          theme: 'material',
+          lineNumbers: true,
+          tabSize: 2,
+          moveOnDrag: true,
+        }}
+      />
     </div>
   );
 };

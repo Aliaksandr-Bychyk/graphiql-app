@@ -1,13 +1,14 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Editor from './../../components/Editor/Editor';
 import './MainPage.scss';
 
 const MainPage: FC = () => {
-  const onChange = () => {};
+  const [operationValue, setOperationValue] = useState<string>('');
+
   return (
     <div className="main">
       <div className="container">
-        <Editor title={'Operation'} handleChange={onChange} value={'hello'} />
+        <Editor title={'Operation'} onChange={setOperationValue} value={operationValue} />
       </div>
     </div>
   );

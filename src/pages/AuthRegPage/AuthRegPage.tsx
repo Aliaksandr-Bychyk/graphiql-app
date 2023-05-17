@@ -29,7 +29,7 @@ const AuthRegPage: FC = () => {
 
   const store = useUserAuth();
 
-  const onSubmit = (data: FormInputs) => {
+  const onSubmit = (data: IFormInputs) => {
     isReg ? store?.createUser(data.email, data.password) : store?.signIn(data.email, data.password);
   };
 

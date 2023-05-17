@@ -8,7 +8,7 @@ import { signIn, signUp } from '@/services/firebase';
 
 import { useUserAuth } from '@/context/AuthContext';
 
-export interface FormInputs {
+export interface IFormInputs {
   email: string;
   password: string;
 }
@@ -18,7 +18,7 @@ const AuthRegPage: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputs>({
+  } = useForm<IFormInputs>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
   });

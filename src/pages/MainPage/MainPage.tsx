@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import Editor from './../../components/Editor/Editor';
 import './MainPage.scss';
+import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
 
 const MainPage: FC = () => {
   const [operationValue, setOperationValue] = useState<string>('');
@@ -12,7 +13,9 @@ const MainPage: FC = () => {
   return (
     <div className="main">
       <div className="container main__container">
-        <div className="main__documentation">documentation</div>
+        <div className="main__documentation">
+          <DocsWindow />
+        </div>
         <div className="main__editors">
           <Editor title={'Operation'} onChange={setOperationValue} value={operationValue} />
           {isVar ? (

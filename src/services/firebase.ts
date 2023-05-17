@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 export const firebaseConfig = {
@@ -22,6 +23,7 @@ export const auth = getAuth(app);
 export async function signUp(email: string, password: string) {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }
@@ -43,3 +45,5 @@ export function logOut() {
       console.log(error);
     });
 }
+
+export { getAuth, onAuthStateChanged };

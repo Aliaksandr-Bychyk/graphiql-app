@@ -1,11 +1,16 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
 import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from '@/context/AuthContext';
 
 const Header: FC = () => {
-  const isUserAuth = true;
+  const store = useUserAuth();
   const navigate = useNavigate();
+
+  function logOut() {
+    store?.logout();
+  }
 
   useEffect(() => {
     window.onscroll = () => {
@@ -24,13 +29,20 @@ const Header: FC = () => {
           </option>
           <option value="ru">RU</option>
         </select>
-        {isUserAuth ? (
-          <div className="header__buttons">
-            <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
-            <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
-          </div>
+
+        {store?.loading ? (
+          <p style={{ color: '#fff' }}>Loading...</p>
         ) : (
-          <Button>Sign out</Button>
+          <>
+            {store?.user ? (
+              <Button onClick={logOut}>Sign out</Button>
+            ) : (
+              <div className="header__buttons">
+                <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
+                <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </header>

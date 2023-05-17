@@ -4,6 +4,9 @@ import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { signIn, signUp } from '@/services/firebase';
+
+import { useUserAuth } from '@/context/AuthContext';
 
 export interface FormInputs {
   email: string;
@@ -24,8 +27,10 @@ const AuthRegPage: FC = () => {
   const navigate = useNavigate();
   const isReg = location.pathname === '/sign-up';
 
-  const onSubmit = () => {
-    //do something
+  const store = useUserAuth();
+
+  const onSubmit = (data: FormInputs) => {
+    isReg ? store?.createUser(data.email, data.password) : store?.signIn(data.email, data.password);
   };
 
   return (

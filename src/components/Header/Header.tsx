@@ -1,9 +1,11 @@
 import { FC, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
   const isUserAuth = true;
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.onscroll = () => {
@@ -24,8 +26,8 @@ const Header: FC = () => {
         </select>
         {isUserAuth ? (
           <div className="header__buttons">
-            <Button>Sign up</Button>
-            <Button>Sign in</Button>
+            <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
+            <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
           </div>
         ) : (
           <Button>Sign out</Button>

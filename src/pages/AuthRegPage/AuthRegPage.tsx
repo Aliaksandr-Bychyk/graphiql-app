@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export interface IFormInputs {
   email: string;
@@ -19,7 +20,9 @@ const AuthRegPage: FC = () => {
     reValidateMode: 'onSubmit',
   });
 
-  const [isReg, setIsReg] = useState<boolean>(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isReg = location.pathname === '/sign-up';
 
   const onSubmit = () => {
     //do something
@@ -28,41 +31,27 @@ const AuthRegPage: FC = () => {
   return (
     <div className="auth-reg">
       <div className="container">
-        {isReg ? (
-          <div className="auth-reg__wrapper">
-            <h1 className="auth-reg__title">Sign Up</h1>
-            <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
-              <TextInput
-                name="password"
-                placeholder="Password..."
-                register={register}
-                errors={errors}
-              />
-              <SubmitInput disabled={false} />
-            </form>
+        <div className="auth-reg__wrapper">
+          <h1 className="auth-reg__title">{isReg ? 'Sign Up' : 'Sign In'}</h1>
+          <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
+            <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
+            <TextInput
+              name="password"
+              placeholder="Password..."
+              register={register}
+              errors={errors}
+            />
+            <SubmitInput disabled={false} />
+          </form>
+          {isReg && (
             <div className="auth-reg__question">
-              Do you already have an account?{' '}
-              <span className="auth-reg__link" onClick={() => setIsReg(false)}>
+              Do you already have an account?&nbsp;
+              <span className="auth-reg__link" onClick={() => navigate('/sign-in')}>
                 Sing In
               </span>
             </div>
-          </div>
-        ) : (
-          <div className="auth-reg__wrapper">
-            <h1 className="auth-reg__title">Sign In</h1>
-            <form className="auth-reg__form" onSubmit={handleSubmit(onSubmit)}>
-              <TextInput name="email" placeholder="Email..." register={register} errors={errors} />
-              <TextInput
-                name="password"
-                placeholder="Password..."
-                register={register}
-                errors={errors}
-              />
-              <SubmitInput disabled={false} />
-            </form>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

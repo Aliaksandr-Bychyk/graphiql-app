@@ -1,15 +1,16 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
 
 const Header: FC = () => {
-  const store = useUserAuth();
+  const userStore = useUserAuth();
   const navigate = useNavigate();
 
   function logOut() {
-    store?.logout();
+    userStore?.logout();
+    navigate('/sign-in');
   }
 
   useEffect(() => {
@@ -30,11 +31,11 @@ const Header: FC = () => {
           <option value="ru">RU</option>
         </select>
 
-        {store?.loading ? (
+        {userStore?.loading ? (
           <p style={{ color: '#fff' }}>Loading...</p>
         ) : (
           <>
-            {store?.user ? (
+            {userStore?.user ? (
               <Button onClick={logOut}>Sign out</Button>
             ) : (
               <div className="header__buttons">

@@ -4,9 +4,7 @@ import './index.scss';
 import { AuthContextProvider } from './context/AuthContext.tsx';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <StrictMode>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
-  </StrictMode>
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>
 );

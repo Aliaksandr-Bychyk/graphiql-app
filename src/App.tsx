@@ -4,6 +4,8 @@ import Layout from './components/Layout/Layout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import AuthRegPage from './pages/AuthRegPage/AuthRegPage';
+import MainPage from './pages/MainPage/MainPage';
+import ProtectedRoute from './helper/ProtectedRoute';
 
 const App: FC = () => {
   return (
@@ -14,6 +16,14 @@ const App: FC = () => {
           <Route path="sign-up" element={<AuthRegPage />} />
           <Route path="sign-in" element={<AuthRegPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="/editor"
+            element={
+              <ProtectedRoute>
+                <MainPage />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,6 @@ import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { signIn, signUp } from '@/services/firebase';
 
 import { useUserAuth } from '@/context/AuthContext';
 
@@ -27,10 +26,32 @@ const AuthRegPage: FC = () => {
   const navigate = useNavigate();
   const isReg = location.pathname === '/sign-up';
 
-  const store = useUserAuth();
+  const userStore = useUserAuth();
 
-  const onSubmit = (data: IFormInputs) => {
-    isReg ? store?.createUser(data.email, data.password) : store?.signIn(data.email, data.password);
+  const loginUser = async (data: IFormInputs) => {
+    try {
+      await userStore?.signIn(data.email, data.password);
+      navigate('/editor');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const regUser = async (data: IFormInputs) => {
+    try {
+      await userStore?.createUser(data.email, data.password);
+      navigate('/editor');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onSubmit = async (data: IFormInputs) => {
+    if (isReg) {
+      await regUser(data);
+      return;
+    }
+    await loginUser(data);
   };
 
   return (

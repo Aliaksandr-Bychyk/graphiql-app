@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
 
 const Header: FC = () => {
@@ -36,7 +36,12 @@ const Header: FC = () => {
         ) : (
           <>
             {userStore?.user ? (
-              <Button onClick={logOut}>Sign out</Button>
+              <div className="header__buttons">
+                <Button>
+                  <Link to="/editor">Editor</Link>
+                </Button>
+                <Button onClick={logOut}>Sign out</Button>
+              </div>
             ) : (
               <div className="header__buttons">
                 <Button onClick={() => navigate('/sign-up')}>Sign up</Button>

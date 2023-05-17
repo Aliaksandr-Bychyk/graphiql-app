@@ -13,13 +13,27 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
-          <Route path="sign-up" element={<AuthRegPage />} />
-          <Route path="sign-in" element={<AuthRegPage />} />
+          <Route
+            path="sign-up"
+            element={
+              <ProtectedRoute isLogged={false}>
+                <AuthRegPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="sign-in"
+            element={
+              <ProtectedRoute isLogged={false}>
+                <AuthRegPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
           <Route
             path="/editor"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute isLogged={true}>
                 <MainPage />
               </ProtectedRoute>
             }

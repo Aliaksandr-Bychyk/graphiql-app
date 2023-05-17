@@ -67,7 +67,7 @@ const AuthRegPage: FC = () => {
               register={register}
               errors={errors}
             />
-            <SubmitInput disabled={false} />
+            <SubmitInput disabled={userStore!.loading} />
           </form>
           {isReg && (
             <div className="auth-reg__question">

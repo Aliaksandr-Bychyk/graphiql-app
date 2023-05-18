@@ -7,17 +7,22 @@ import './Editor.scss';
 
 interface IEditorProps {
   title: string;
+  secondTitle?: string;
+  onClick?: () => void;
   onChange: (value: string) => void;
   value: string;
 }
 
-const Editor: FC<IEditorProps> = ({ title, onChange, value }) => {
+const Editor: FC<IEditorProps> = ({ title, secondTitle, onChange, value, onClick }) => {
   const handleChange = (_editor: ControlledEditor, _data: object, value: string) => onChange(value);
 
   return (
     <div className="editor">
       <div className="editor__header">
         <h3 className="editor__title">{title}</h3>
+        <h3 className="editor__title inactive" onClick={onClick}>
+          {secondTitle}
+        </h3>
       </div>
       <ControlledEditor
         onBeforeChange={handleChange}

@@ -16,9 +16,21 @@ const MainPage: FC = () => {
         <div className="main__editors">
           <Editor title={'Operation'} onChange={setOperationValue} value={operationValue} />
           {isVar ? (
-            <Editor title={'Variables'} onChange={setVariablesValue} value={variablesValue} />
+            <Editor
+              title={'Variables'}
+              secondTitle={'Headers'}
+              onChange={setVariablesValue}
+              value={variablesValue}
+              onClick={() => setIsVar(false)}
+            />
           ) : (
-            <Editor title={'Headers'} onChange={setHeadersValue} value={headersValue} />
+            <Editor
+              title={'Headers'}
+              secondTitle={'Variables'}
+              onChange={setHeadersValue}
+              value={headersValue}
+              onClick={() => setIsVar(true)}
+            />
           )}
         </div>
         <div className="main__response">response</div>

@@ -5,6 +5,8 @@
   background-color: $editor-color;
 
   &__header {
+    display: flex;
+    gap: 20px;
     height: 60px;
     border-bottom: 1px solid transparentize($button-color, 0.7);
   }
@@ -26,4 +28,9 @@
 .CodeMirror-scroll,
 .CodeMirror-gutter {
   background-color: $editor-color;
+}
+
+.inactive {
+  opacity: 0.5;
+  cursor: pointer;
 }

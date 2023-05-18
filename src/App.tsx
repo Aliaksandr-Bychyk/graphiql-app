@@ -16,7 +16,7 @@ const App: FC = () => {
           <Route
             path="sign-up"
             element={
-              <ProtectedRoute isLogged={false}>
+              <ProtectedRoute>
                 <AuthRegPage />
               </ProtectedRoute>
             }
@@ -24,7 +24,7 @@ const App: FC = () => {
           <Route
             path="sign-in"
             element={
-              <ProtectedRoute isLogged={false}>
+              <ProtectedRoute>
                 <AuthRegPage />
               </ProtectedRoute>
             }
@@ -33,7 +33,7 @@ const App: FC = () => {
           <Route
             path="/editor"
             element={
-              <ProtectedRoute isLogged={true}>
+              <ProtectedRoute>
                 <MainPage />
               </ProtectedRoute>
             }

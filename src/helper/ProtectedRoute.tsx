@@ -4,20 +4,19 @@ import { useUserAuth } from '@/context/AuthContext';
 
 type Props = {
   children: ReactNode;
-  isLogged: boolean;
 };
 
-const ProtectedRoute = ({ isLogged, children }: Props) => {
+const ProtectedRoute = ({ children }: Props) => {
   const userStore = useUserAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userStore?.user && !isLogged) {
-      navigate('/sign-in');
-    } else {
-      navigate('/');
+    if (userStore?.user) {
+      navigate('/editor');
+      return;
     }
-  }, [navigate, userStore?.user, isLogged]);
+    navigate('/sign-in');
+  }, [userStore?.user, navigate]);
 
   return <>{children}</>;
 };

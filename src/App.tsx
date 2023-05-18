@@ -13,14 +13,7 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
-          <Route
-            path="sign-up"
-            element={
-              <ProtectedRoute>
-                <AuthRegPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="sign-up" element={<AuthRegPage />} />
           <Route
             path="sign-in"
             element={

@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import Editor from './../../components/Editor/Editor';
+import RunButton from '../../components/Buttons/RunButton/RunButton';
 import './MainPage.scss';
 
 const MainPage: FC = () => {
@@ -9,13 +10,15 @@ const MainPage: FC = () => {
 
   const [isVar, setIsVar] = useState<boolean>(true);
 
+  const runQuery = () => {};
+
   return (
     <div className="main">
       <div className="container main__container">
         <div className="main__documentation">documentation</div>
         <div className="main__editors">
           <Editor title={'Operation'} onChange={setOperationValue} value={operationValue}>
-            <button className="run-btn" />
+            <RunButton handleClick={runQuery} />
           </Editor>
           {isVar ? (
             <Editor

@@ -32,7 +32,7 @@ const Header: FC = () => {
         </select>
 
         {userStore?.loading ? (
-          <p style={{ color: '#fff' }}>Loading...</p>
+          <p className="app-loading">Loading...</p>
         ) : (
           <>
             {userStore?.user ? (

@@ -1,13 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyDJq8HEsGbwvpiCalD-He-9yfUZ0bGEp_A',
   authDomain: 'graphql-54534.firebaseapp.com',
   projectId: 'graphql-54534',
@@ -17,33 +11,5 @@ export const firebaseConfig = {
   measurementId: 'G-0CQTZQDYF0',
 };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-export async function signUp(email: string, password: string) {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function signIn(email: string, password: string) {
-  try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export function logOut() {
-  signOut(auth)
-    .then(() => {})
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export { getAuth, onAuthStateChanged };

@@ -22,3 +22,8 @@
     overflow: hidden;
   }
 }
+
+.CodeMirror-scroll,
+.CodeMirror-gutter {
+  background-color: $editor-color;
+}

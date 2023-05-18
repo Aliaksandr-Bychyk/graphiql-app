@@ -5,6 +5,8 @@ import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
 import './AuthRegPage.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { useUserAuth } from '@/context/AuthContext';
+
 export interface IFormInputs {
   email: string;
   password: string;
@@ -24,8 +26,32 @@ const AuthRegPage: FC = () => {
   const navigate = useNavigate();
   const isReg = location.pathname === '/sign-up';
 
-  const onSubmit = () => {
-    //do something
+  const userStore = useUserAuth();
+
+  const loginUser = async (data: IFormInputs) => {
+    try {
+      await userStore?.signIn(data.email, data.password);
+      navigate('/editor');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const regUser = async (data: IFormInputs) => {
+    try {
+      await userStore?.createUser(data.email, data.password);
+      navigate('/editor');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onSubmit = async (data: IFormInputs) => {
+    if (isReg) {
+      await regUser(data);
+      return;
+    }
+    await loginUser(data);
   };
 
   return (
@@ -41,7 +67,7 @@ const AuthRegPage: FC = () => {
               register={register}
               errors={errors}
             />
-            <SubmitInput disabled={false} />
+            <SubmitInput disabled={userStore!.loading} />
           </form>
           {isReg && (
             <div className="auth-reg__question">

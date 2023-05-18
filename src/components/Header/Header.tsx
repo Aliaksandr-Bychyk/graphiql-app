@@ -1,11 +1,17 @@
 import { FC, useEffect } from 'react';
 import Button from '../Buttons/Button/Button';
 import './Header.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserAuth } from '@/context/AuthContext';
 
 const Header: FC = () => {
-  const isUserAuth = true;
+  const userStore = useUserAuth();
   const navigate = useNavigate();
+
+  function logOut() {
+    userStore?.logout();
+    navigate('/sign-in');
+  }
 
   useEffect(() => {
     window.onscroll = () => {
@@ -24,13 +30,25 @@ const Header: FC = () => {
           </option>
           <option value="ru">RU</option>
         </select>
-        {isUserAuth ? (
-          <div className="header__buttons">
-            <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
-            <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
-          </div>
+
+        {userStore?.loading ? (
+          <p className="app-loading">Loading...</p>
         ) : (
-          <Button>Sign out</Button>
+          <>
+            {userStore?.user ? (
+              <div className="header__buttons">
+                <Button>
+                  <Link to="/editor">Editor</Link>
+                </Button>
+                <Button onClick={logOut}>Sign out</Button>
+              </div>
+            ) : (
+              <div className="header__buttons">
+                <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
+                <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </header>

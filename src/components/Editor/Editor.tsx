@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript';
@@ -13,16 +13,26 @@ interface IEditorProps {
   value: string;
 }
 
-const Editor: FC<IEditorProps> = ({ title, secondTitle, onChange, value, onClick }) => {
+const Editor: FC<PropsWithChildren<IEditorProps>> = ({
+  title,
+  secondTitle,
+  onChange,
+  value,
+  onClick,
+  children,
+}) => {
   const handleChange = (_editor: ControlledEditor, _data: object, value: string) => onChange(value);
 
   return (
     <div className="editor">
       <div className="editor__header">
-        <h3 className="editor__title">{title}</h3>
-        <h3 className="editor__title inactive" onClick={onClick}>
-          {secondTitle}
-        </h3>
+        <div className="editor__titles">
+          <h3 className="editor__title">{title}</h3>
+          <h3 className="editor__title inactive" onClick={onClick}>
+            {secondTitle}
+          </h3>
+        </div>
+        {children}
       </div>
       <ControlledEditor
         onBeforeChange={handleChange}

@@ -14,7 +14,9 @@ const MainPage: FC = () => {
       <div className="container main__container">
         <div className="main__documentation">documentation</div>
         <div className="main__editors">
-          <Editor title={'Operation'} onChange={setOperationValue} value={operationValue} />
+          <Editor title={'Operation'} onChange={setOperationValue} value={operationValue}>
+            <button className="run-btn" />
+          </Editor>
           {isVar ? (
             <Editor
               title={'Variables'}

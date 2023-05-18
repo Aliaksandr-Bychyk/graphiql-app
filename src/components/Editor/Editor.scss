@@ -6,9 +6,15 @@
 
   &__header {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
     height: 60px;
     border-bottom: 1px solid transparentize($button-color, 0.7);
+  }
+
+  &__titles {
+    display: flex;
+    gap: 20px;
   }
 
   &__title {

@@ -4,9 +4,10 @@ import { useUserAuth } from '@/context/AuthContext';
 
 type Props = {
   children: ReactNode;
+  isReg?: boolean;
 };
 
-const ProtectedRoute = ({ children }: Props) => {
+const ProtectedRoute = ({ children, isReg }: Props) => {
   const userStore = useUserAuth();
   const navigate = useNavigate();
 
@@ -15,8 +16,9 @@ const ProtectedRoute = ({ children }: Props) => {
       navigate('/editor');
       return;
     }
-    navigate('/sign-in');
-  }, [userStore?.user, navigate]);
+
+    isReg ? navigate('/sign-up') : navigate('/sign-in');
+  }, [userStore?.user, navigate, isReg]);
 
   return <>{children}</>;
 };

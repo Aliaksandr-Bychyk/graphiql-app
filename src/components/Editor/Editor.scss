@@ -5,8 +5,16 @@
   background-color: $editor-color;
 
   &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 60px;
     border-bottom: 1px solid transparentize($button-color, 0.7);
+  }
+
+  &__titles {
+    display: flex;
+    gap: 20px;
   }
 
   &__title {
@@ -21,4 +29,14 @@
     padding: 20px 0;
     overflow: hidden;
   }
+}
+
+.CodeMirror-scroll,
+.CodeMirror-gutter {
+  background-color: $editor-color;
+}
+
+.inactive {
+  opacity: 0.5;
+  cursor: pointer;
 }

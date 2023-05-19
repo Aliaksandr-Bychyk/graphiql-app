@@ -10,6 +10,8 @@ const MainPage: FC = () => {
 
   const [isVar, setIsVar] = useState<boolean>(true);
 
+  console.log(operationValue);
+
   const runQuery = () => {};
 
   return (

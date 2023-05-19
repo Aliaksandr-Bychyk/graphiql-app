@@ -23,7 +23,7 @@ const WelcomePage = () => {
           <div className="welcome__info info">
             <img className="info__logo" src={WelcomeLogo} alt="Welcome logo" />
             <h2 className="info__title">GraphiQL is a playground/IDE for graphQL requests</h2>
-            <Button onClick={() => navigate('/main')}>Try out</Button>
+            <Button onClick={() => navigate('/editor')}>Try out</Button>
           </div>
 
           <div className="welcome__developers dev">

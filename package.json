@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "codemirror": "^5.65.13",
     "firebase": "^9.21.0",
     "i18next": "^22.5.0",

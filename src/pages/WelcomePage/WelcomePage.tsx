@@ -25,7 +25,7 @@ const WelcomePage = () => {
           <div className="welcome__info info">
             <img className="info__logo" src={WelcomeLogo} alt="Welcome logo" />
             <h2 className="info__title">{t('appDesc')}</h2>
-            <Button onClick={() => navigate('/main')}>{t('tryBtn')}</Button>
+            <Button onClick={() => navigate('/editor')}>{t('tryBtn')}</Button>
           </div>
 
           <div className="welcome__developers dev">

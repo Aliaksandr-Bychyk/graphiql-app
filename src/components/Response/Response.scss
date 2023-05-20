@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+.response-boby {
+  padding: 20px 0;
+}
+
+.response__loading {
+  font-size: 18px;
+}
+
+.response__error {
+  color: red;
+  font-size: 18px;
+}

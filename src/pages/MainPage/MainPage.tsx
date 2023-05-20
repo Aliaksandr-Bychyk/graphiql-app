@@ -46,7 +46,12 @@ const MainPage: FC = () => {
             />
           )}
         </div>
-        <div className="main__response">{query && <Response query={query} />}</div>
+        <div className="response">
+          <div className="response__header">
+            <h3 className="response__title">Response</h3>
+          </div>
+          {query && <Response query={query} />}
+        </div>
       </div>
     </div>
   );

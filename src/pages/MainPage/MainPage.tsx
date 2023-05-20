@@ -1,9 +1,9 @@
-import { gql, useQuery } from '@apollo/client';
+import { DocumentNode, gql } from '@apollo/client';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Editor from './../../components/Editor/Editor';
 import RunButton from '../../components/Buttons/RunButton/RunButton';
-// import Response from '../../components/Response/Response';
+import Response from '../../components/Response/Response';
 import './MainPage.scss';
 
 const MainPage: FC = () => {
@@ -12,40 +12,16 @@ const MainPage: FC = () => {
   const [operationValue, setOperationValue] = useState<string>('');
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
-
+  const [query, setQuery] = useState<DocumentNode | undefined>();
   const [isVar, setIsVar] = useState<boolean>(true);
-
-  // const query = gql`
-  //   ${operationValue}
-  // `;
-
-  // const query = gql`
-  //   query getAnime {
-  //     Media(id: 1, type: ANIME) {
-  //       id
-  //       title {
-  //         romaji
-  //         english
-  //         native
-  //       }
-  //     }
-  //   }
-  // `;
 
   const runQuery = () => {
     if (operationValue) {
-      const query = gql`
+      setQuery(gql`
         ${operationValue}
-      `;
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { loading, error, data } = useQuery(query);
-      console.log(data);
-      return { loading, error, data };
+      `);
     }
   };
-
-  // const { loading, error, data } = useQuery(query);
-  // console.log(data);
 
   return (
     <div className="main">
@@ -73,9 +49,7 @@ const MainPage: FC = () => {
             />
           )}
         </div>
-        <div className="main__response">
-          {/* <Response data={data} loading={loading} error={error} /> */}
-        </div>
+        <div className="main__response">{query && <Response query={query} />}</div>
       </div>
     </div>
   );

@@ -1,19 +1,21 @@
 import { FC } from 'react';
-import { ApolloError } from '@apollo/client';
+import { DocumentNode, useQuery } from '@apollo/client';
 import './Response.scss';
 
 interface IResponseProps {
-  data: object;
-  loading: boolean;
-  error: ApolloError | undefined;
+  query: DocumentNode;
 }
 
-const Response: FC<IResponseProps> = ({ data, loading, error }) => {
+const Response: FC<IResponseProps> = ({ query }) => {
+  const { loading, error, data } = useQuery(query);
+  console.log(data);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
   return (
     <div className="response">
+      Hereeee
       {/* {data.__schema.types.map((type, index) => (
           <QueryType key={index} type={type} />
         ))} */}

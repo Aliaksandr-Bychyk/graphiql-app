@@ -11,8 +11,28 @@
     gap: 15px;
   }
 
-  &__documentation,
-  &__response {
+  &__documentation {
     background-color: $editor-color;
+  }
+}
+
+.response {
+  padding: 0 40px;
+  background-color: $editor-color;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid transparentize($button-color, 0.7);
+  }
+
+  &__title {
+    margin: 0;
+    height: 100%;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
   }
 }

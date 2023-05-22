@@ -1,10 +1,11 @@
 import { gql, useQuery } from '@apollo/client';
-import { FC, useEffect } from 'react';
+import { Dispatch, FC, SetStateAction, createContext, useEffect, useState } from 'react';
 import './DocsWindow.scss';
+import { IQueryField, IQueryType } from '@/interfaces/Docs';
+import DocsExplorer from '../DocsExplorer/DocsExplorer';
 
 const query = gql`
   fragment FullType on __Type {
-    kind
     name
     description
     fields(includeDeprecated: true) {
@@ -15,22 +16,6 @@ const query = gql`
       type {
         ...TypeRef
       }
-      isDeprecated
-      deprecationReason
-    }
-    inputFields {
-      ...InputValue
-    }
-    interfaces {
-      ...TypeRef
-    }
-    enumValues(includeDeprecated: true) {
-      name
-      isDeprecated
-      deprecationReason
-    }
-    possibleTypes {
-      ...TypeRef
     }
   }
 
@@ -49,21 +34,6 @@ const query = gql`
 
   query IntrospectionQuery {
     __schema {
-      queryType {
-        name
-        fields {
-          name
-          type {
-            ...TypeRef
-          }
-          args {
-            ...InputValue
-          }
-        }
-      }
-      mutationType {
-        name
-      }
       types {
         ...FullType
       }
@@ -71,19 +41,30 @@ const query = gql`
   }
 `;
 
+interface IDocsContext {
+  value: IQueryType[] | IQueryType | IQueryField;
+  setValue?: Dispatch<SetStateAction<IQueryType[] | IQueryType | IQueryField>>;
+}
+
+export const DocsContext = createContext<IDocsContext>({ value: [] });
+
 const DocsWindow: FC = () => {
   const { loading, error, data } = useQuery(query);
-  // console.log(data.__schema.types);
+  const [value, setValue] = useState<IQueryType[] | IQueryType | IQueryField>([]);
+
+  useEffect(() => {
+    data && setValue(data.__schema.types);
+  }, [data]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div className="docs">
-      {data.__schema.types.map((type) => (
-        <span>{type.name}</span>
-      ))}
-    </div>
+    <DocsContext.Provider value={{ value, setValue }}>
+      <div className="docs">
+        <DocsExplorer />
+      </div>
+    </DocsContext.Provider>
   );
 };
 

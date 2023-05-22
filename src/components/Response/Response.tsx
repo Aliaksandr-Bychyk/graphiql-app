@@ -23,7 +23,7 @@ const Response: FC<IResponseProps> = ({ query, variables, headers }) => {
 
   return (
     <UnControlledEditor
-      value={JSON.stringify(data)}
+      value={JSON.stringify(data, null, 2)}
       className="response-boby"
       options={{
         lineWrapping: true,

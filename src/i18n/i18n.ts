@@ -3,6 +3,12 @@ import { initReactI18next } from 'react-i18next';
 import localizationEN from './localization/english.json';
 import localizationRU from './localization/russian.json';
 
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    returnNull: false;
+  }
+}
+
 const resources = {
   en: {
     translation: localizationEN,

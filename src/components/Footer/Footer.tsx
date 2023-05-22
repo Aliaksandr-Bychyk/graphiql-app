@@ -1,12 +1,15 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Footer.scss';
 
 const Footer: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container footer__container">
         <div className="footer__developers">
-          <h3 className="footer__title">DEVELOPERS</h3>
+          <h3 className="footer__title">{t('developers')}</h3>
           <ul className="footer__list">
             <li className="footer__list__item">
               <a href="https://github.com/Aliaksandr-Bychyk" target="blank">

@@ -8,10 +8,15 @@ import './Response.scss';
 
 interface IResponseProps {
   query: DocumentNode;
+  variables: object;
+  headers: object;
 }
 
-const Response: FC<IResponseProps> = ({ query }) => {
-  const { loading, error, data } = useQuery(query);
+const Response: FC<IResponseProps> = ({ query, variables, headers }) => {
+  const { loading, error, data } = useQuery(query, {
+    variables: { variables },
+    // context: { headers: { headers } },
+  });
 
   if (loading) return <p className="response__info">Loading...</p>;
   if (error) return <p className="response__info">Error : {error.message}</p>;

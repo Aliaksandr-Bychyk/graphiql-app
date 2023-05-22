@@ -53,7 +53,13 @@ const MainPage: FC = () => {
           <div className="response__header">
             <h3 className="response__title">Response</h3>
           </div>
-          {query && <Response query={query} />}
+          {query && (
+            <Response
+              query={query}
+              variables={variablesValue ? JSON.parse(variablesValue) : variablesValue}
+              headers={headersValue ? JSON.parse(headersValue) : headersValue}
+            />
+          )}
         </div>
       </div>
     </div>

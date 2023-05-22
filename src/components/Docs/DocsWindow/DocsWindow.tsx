@@ -44,6 +44,7 @@ const query = gql`
 interface IDocsContext {
   value: IQueryType[] | IQueryType | IQueryField;
   setValue?: Dispatch<SetStateAction<IQueryType[] | IQueryType | IQueryField>>;
+  home?: IQueryType[];
 }
 
 export const DocsContext = createContext<IDocsContext>({ value: [] });
@@ -59,8 +60,9 @@ const DocsWindow: FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
+  const home = data.__schema.types;
   return (
-    <DocsContext.Provider value={{ value, setValue }}>
+    <DocsContext.Provider value={{ value, setValue, home }}>
       <div className="docs">
         <DocsExplorer />
       </div>

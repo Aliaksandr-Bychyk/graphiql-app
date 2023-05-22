@@ -5,11 +5,11 @@ import { DocsContext } from '../DocsWindow/DocsWindow';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
 
 const DocsExplorer: FC = () => {
-  const { value, setValue } = useContext(DocsContext);
-  console.log(value);
+  const { value, setValue, home } = useContext(DocsContext);
   return (
     <div>
       <div className="docs-explorer__nav">
+        {!Array.isArray(value) && <button onClick={() => setValue!(home!)}>H</button>}
         <h2>{(value as IQueryType).name ?? 'Documentation Explorer'}</h2>
       </div>
 

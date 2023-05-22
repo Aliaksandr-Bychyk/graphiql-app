@@ -7,7 +7,7 @@ interface IDocsQueryTypeProps {
 }
 
 const DocsQueryType: FC<IDocsQueryTypeProps> = ({ type }) => {
-  const { value, setValue } = useContext(DocsContext);
+  const { setValue } = useContext(DocsContext);
   return (
     <span
       onClick={() => {

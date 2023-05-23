@@ -15,10 +15,10 @@ const DocsExplorer: FC = () => {
         <h2>{(value as IQueryType).name ?? 'Documentation Explorer'}</h2>
       </div>
 
-      {(value as IQueryType).description ? (
+      {(value as IQueryType).__typename == '__Type' ? (
         <section>
           <h2>Description</h2>
-          {(value as IQueryType).description}
+          {home!.find((el) => el.name == (value as IQueryField | IQueryType).name)!.description}
         </section>
       ) : (
         ''
@@ -35,7 +35,7 @@ const DocsExplorer: FC = () => {
         ''
       )}
 
-      {(value as IQueryField).__typename == '__Field' ? (
+      {(value as IQueryField).__typename == '__Field' && (
         <section>
           <h2>Type</h2>
           {(value as IQueryField).type.name ? (
@@ -48,8 +48,6 @@ const DocsExplorer: FC = () => {
             />
           )}
         </section>
-      ) : (
-        ''
       )}
 
       {Array.isArray(value) ? (

@@ -1,6 +1,8 @@
 import { IQueryField } from '@/interfaces/Docs';
 import { FC, useContext } from 'react';
 import { DocsContext } from '../DocsWindow/DocsWindow';
+import './DocsQueryField.scss';
+import DocsQueryType from '../DocsQueryType/DocsQueryType';
 
 interface IDocsQueryFieldProps {
   field: IQueryField;
@@ -9,16 +11,29 @@ interface IDocsQueryFieldProps {
 const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
   const { setValue } = useContext(DocsContext);
   return (
-    <div
-      onClick={() => {
-        setValue!(field);
-        console.log(field);
-      }}
-    >
-      <span>{field.name}(</span>
-      {field.args.map((arg, index) => (
-        <span key={index}>{`${arg.name}: ${arg.type.name},\n`}</span>
-      ))}
+    <div className="query-field-container">
+      <span
+        className="query-field"
+        onClick={() => {
+          setValue!(field);
+          console.log(field);
+        }}
+      >
+        {field.name}
+      </span>
+      <span>(</span>
+      {field.args.length > 0 && (
+        <div className="query-field__args-container">
+          {field.args.map((arg, index) => (
+            <span key={index}>
+              <span className="query-arg">{arg.name}</span>
+              {': '}
+              <DocsQueryType type={arg.type}></DocsQueryType>
+              {/* <span className="">{arg.type.name}</span> */}
+            </span>
+          ))}
+        </div>
+      )}
       <span>)</span>
     </div>
   );

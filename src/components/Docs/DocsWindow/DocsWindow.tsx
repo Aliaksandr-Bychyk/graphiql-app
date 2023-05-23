@@ -3,43 +3,7 @@ import { Dispatch, FC, SetStateAction, createContext, useEffect, useState } from
 import './DocsWindow.scss';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
 import DocsExplorer from '../DocsExplorer/DocsExplorer';
-
-const query = gql`
-  fragment FullType on __Type {
-    name
-    description
-    fields(includeDeprecated: true) {
-      name
-      args {
-        ...InputValue
-      }
-      type {
-        ...TypeRef
-      }
-    }
-  }
-
-  fragment InputValue on __InputValue {
-    name
-    description
-    type {
-      ...TypeRef
-    }
-    defaultValue
-  }
-  fragment TypeRef on __Type {
-    name
-    description
-  }
-
-  query IntrospectionQuery {
-    __schema {
-      types {
-        ...FullType
-      }
-    }
-  }
-`;
+import { getIntrospectionQuery } from 'graphql';
 
 interface IDocsContext {
   value: IQueryType[] | IQueryType | IQueryField;
@@ -50,7 +14,7 @@ interface IDocsContext {
 export const DocsContext = createContext<IDocsContext>({ value: [] });
 
 const DocsWindow: FC = () => {
-  const { loading, error, data } = useQuery(query);
+  const { loading, error, data } = useQuery(gql(getIntrospectionQuery()));
   const [value, setValue] = useState<IQueryType[] | IQueryType | IQueryField>([]);
 
   useEffect(() => {

@@ -3,9 +3,11 @@ import './DocsExplorer.scss';
 import DocsQueryType from '../DocsQueryType/DocsQueryType';
 import { DocsContext } from '../DocsWindow/DocsWindow';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
+import DocsQueryField from '../DocsQueryField/DocsQueryField';
 
 const DocsExplorer: FC = () => {
   const { value, setValue, home } = useContext(DocsContext);
+  console.log(value);
   return (
     <div>
       <div className="docs-explorer__nav">
@@ -25,18 +27,26 @@ const DocsExplorer: FC = () => {
       {(value as IQueryType).fields ? (
         <section>
           <h2>Fields</h2>
-          {(value as IQueryType).fields!.map((el, i) => (
-            <p key={i}>{el.name}()</p>
+          {(value as IQueryType).fields!.map((field, index) => (
+            <DocsQueryField key={index} field={field} />
           ))}
         </section>
       ) : (
         ''
       )}
 
-      {(value as IQueryField).type ? (
+      {(value as IQueryField).__typename == '__Field' ? (
         <section>
           <h2>Type</h2>
-          <DocsQueryType type={(value as IQueryField).type} />
+          {(value as IQueryField).type.name ? (
+            <DocsQueryType
+              type={home!.find((el) => el.name == (value as IQueryField).type.name)!}
+            />
+          ) : (
+            <DocsQueryType
+              type={home!.find((el) => el.name == (value as IQueryField).type.ofType!.name)!}
+            />
+          )}
         </section>
       ) : (
         ''

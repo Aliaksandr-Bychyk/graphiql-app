@@ -15,11 +15,11 @@ interface IResponseProps {
 const Response: FC<IResponseProps> = ({ query, variables, headers }) => {
   const { loading, error, data } = useQuery(query, {
     variables: { variables },
-    // context: { headers: { headers } },
+    context: { headers: headers },
   });
 
   if (loading) return <p className="response__info">Loading...</p>;
-  if (error) return <p className="response__info">Error : {error.message}</p>;
+  if (error) return <p className="response__info">Error: {error.message}</p>;
 
   return (
     <UnControlledEditor

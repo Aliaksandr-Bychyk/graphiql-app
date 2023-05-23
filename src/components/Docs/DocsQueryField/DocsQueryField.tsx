@@ -16,7 +16,6 @@ const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
         className="query-field"
         onClick={() => {
           setValue!(field);
-          console.log(field);
         }}
       >
         {field.name}

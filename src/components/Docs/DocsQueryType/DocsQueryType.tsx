@@ -13,7 +13,6 @@ const DocsQueryType: FC<IDocsQueryTypeProps> = ({ type }) => {
     <span
       className="query-type"
       onClick={() => {
-        console.log(type);
         setValue!(type);
       }}
     >

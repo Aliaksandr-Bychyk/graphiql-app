@@ -11,6 +11,7 @@ export interface IQueryField {
   name: string;
   args: IQUeryArg[];
   type: IQueryType;
+  description: string | null;
 }
 export interface IQUeryArg {
   __typename: '__InputValue';

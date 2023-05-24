@@ -23,5 +23,6 @@
   "operation": "Запрос",
   "variables": "Переменные",
   "headers": "Заголовки",
-  "response": "Ответ"
+  "response": "Ответ",
+  "error": "Ошибка"
 }

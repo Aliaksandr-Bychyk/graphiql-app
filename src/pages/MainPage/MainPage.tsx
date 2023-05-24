@@ -51,7 +51,7 @@ const MainPage: FC = () => {
         </div>
         <div className="response">
           <div className="response__header">
-            <h3 className="response__title">Response</h3>
+            <h3 className="response__title">{t('response')}</h3>
           </div>
           {query && (
             <Response

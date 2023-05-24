@@ -10,11 +10,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const client = new ApolloClient({
-  uri: 'https://graphql.anilist.co/',
-  cache: new InMemoryCache(),
-});
-
 createRoot(document.getElementById('root') as HTMLElement).render(
   <ApolloProvider client={client}>
     <AuthContextProvider>

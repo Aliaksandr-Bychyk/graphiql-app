@@ -23,5 +23,6 @@
   "operation": "Operation",
   "variables": "Variables",
   "headers": "Headers",
-  "response": "Response"
+  "response": "Response",
+  "error": "Error"
 }

@@ -24,5 +24,7 @@
   "operation": "Operation",
   "variables": "Variables",
   "headers": "Headers",
-  "response": "Response"
+  "response": "Response",
+  "errorBoundary": "Something went wrong",
+  "checkConsole": " Check the console"
 }

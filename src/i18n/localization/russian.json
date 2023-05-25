@@ -24,5 +24,7 @@
   "operation": "Запрос",
   "variables": "Переменные",
   "headers": "Заголовки",
-  "response": "Ответ"
+  "response": "Ответ",
+  "errorBoundary": "Что то пошло не так",
+  "checkConsole": "Провертье консоль"
 }

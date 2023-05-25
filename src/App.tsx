@@ -6,6 +6,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import AuthRegPage from './pages/AuthRegPage/AuthRegPage';
 import MainPage from './pages/MainPage/MainPage';
 import ProtectedRoute from './helper/ProtectedRoute';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 const App: FC = () => {
   return (
@@ -17,7 +18,9 @@ const App: FC = () => {
             path="sign-up"
             element={
               <ProtectedRoute isReg={true}>
-                <AuthRegPage />
+                <ErrorBoundary>
+                  <AuthRegPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -25,7 +28,9 @@ const App: FC = () => {
             path="sign-in"
             element={
               <ProtectedRoute isReg={false}>
-                <AuthRegPage />
+                <ErrorBoundary>
+                  <AuthRegPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -34,7 +39,9 @@ const App: FC = () => {
             path="/editor"
             element={
               <ProtectedRoute>
-                <MainPage />
+                <ErrorBoundary>
+                  <MainPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />

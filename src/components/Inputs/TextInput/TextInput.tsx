@@ -8,7 +8,7 @@ interface ITextInputProps<T extends FieldValues> {
   errors: FieldErrors<T>;
 }
 
-const regExp = new RegExp('(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-#$.%&@!+=<>*])');
+const regExp = new RegExp('(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-#$.%&@_!+=<>*])');
 
 const TextInput = <T extends FieldValues>({
   name,

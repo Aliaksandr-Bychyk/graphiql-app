@@ -54,11 +54,56 @@
     justify-content: space-between;
   }
 
+  &__img {
+    display: flex;
+    margin: auto;
+  }
+
   &__name {
     font-weight: 400;
     font-size: 26px;
     line-height: 140%;
     text-align: center;
     color: $light-color;
+  }
+}
+
+@media screen and (max-width: $media-tab-pt) {
+  .dev {
+    &__img {
+      width: 150px;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .info {
+    margin: 0 0 80px;
+
+    &__title {
+      font-size: 30px;
+    }
+  }
+
+  .dev {
+    margin: 0 0 80px;
+
+    &__title {
+      margin: 0 0 40px;
+      font-size: 30px;
+    }
+
+    &__list {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+
+  .welcome__text {
+    font-size: 24px;
   }
 }

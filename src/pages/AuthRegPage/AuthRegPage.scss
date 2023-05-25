@@ -39,3 +39,9 @@
     }
   }
 }
+
+@media screen and (max-width: $media-tab) {
+  .auth-reg__question {
+    font-size: 14px;
+  }
+}

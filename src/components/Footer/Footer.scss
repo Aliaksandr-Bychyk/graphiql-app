@@ -2,7 +2,6 @@
 
 .footer {
   width: 100%;
-  height: 215px;
   background-color: $block-color;
 
   &__container {
@@ -28,5 +27,24 @@
     background-image: url(../../assets/svg/rs_school_js.svg);
     background-repeat: no-repeat;
     background-position: 50%;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .footer {
+    padding: 0 0 30px;
+
+    &__container {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__title {
+      text-align: center;
+    }
+  }
+
+  .footer__list__item {
+    margin: auto;
   }
 }

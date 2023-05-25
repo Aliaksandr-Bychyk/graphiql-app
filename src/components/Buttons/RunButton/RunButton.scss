@@ -14,3 +14,11 @@
     transition: 0.4s all ease;
   }
 }
+
+@media screen and (max-width: $media-tab) {
+  .run-btn {
+    width: 35px;
+    height: 35px;
+    background-size: 25px 25px;
+  }
+}

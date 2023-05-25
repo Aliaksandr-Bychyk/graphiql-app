@@ -18,6 +18,7 @@
   "email": "Email...",
   "password": "Password...",
   "authQuestion": "Do you already have an account?",
+  "regQuestion": "Haven't you registered yet?",
   "submit": "Submit",
   "documentation": "Documentation",
   "operation": "Operation",

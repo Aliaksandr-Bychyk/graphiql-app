@@ -18,6 +18,7 @@
   "email": "Почта...",
   "password": "Пароль...",
   "authQuestion": "Уже есть аккаунт?",
+  "regQuestion": "Еще не зарегистрировались?",
   "submit": "Отправить",
   "documentation": "Документация",
   "operation": "Запрос",

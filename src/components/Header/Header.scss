@@ -16,9 +16,8 @@
   }
 
   &__lang {
-    height: 37px;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 9px;
     border-radius: 10px;
     border: none;
     background-color: $button-color;
@@ -41,4 +40,17 @@
   height: 60px;
   transition: all 0.5s ease;
   background-color: rgba(56, 61, 91, 0.5);
+}
+
+@media screen and (max-width: $media-tab) {
+  .header {
+    &__lang {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    &__buttons {
+      gap: 10px;
+    }
+  }
 }

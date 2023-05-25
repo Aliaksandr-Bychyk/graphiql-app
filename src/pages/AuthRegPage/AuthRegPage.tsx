@@ -71,11 +71,18 @@ const AuthRegPage: FC = () => {
             />
             <SubmitInput disabled={userStore!.loading} />
           </form>
-          {isReg && (
+          {isReg ? (
             <div className="auth-reg__question">
               {t('authQuestion')}&nbsp;
               <span className="auth-reg__link" onClick={() => navigate('/sign-in')}>
                 {t('SignIn')}
+              </span>
+            </div>
+          ) : (
+            <div className="auth-reg__question">
+              {t('regQuestion')}&nbsp;
+              <span className="auth-reg__link" onClick={() => navigate('/sign-up')}>
+                {t('SignUp')}
               </span>
             </div>
           )}

@@ -40,3 +40,9 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+@media screen and (max-width: $media-tab) {
+  .editor__title {
+    font-size: 16px;
+  }
+}

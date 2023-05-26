@@ -4,6 +4,7 @@ import DocsQueryType from '../DocsQueryType/DocsQueryType';
 import { DocsContext } from '../DocsWindow/DocsWindow';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
 import DocsQueryField from '../DocsQueryField/DocsQueryField';
+import DocsQueryArgs from '../DocsQueryArgs/DocsQueryArgs';
 
 const DocsExplorer: FC = () => {
   const { value, setValue, home } = useContext(DocsContext);
@@ -36,6 +37,13 @@ const DocsExplorer: FC = () => {
         </section>
       ) : (
         ''
+      )}
+
+      {(value as IQueryField).args && (value as IQueryField).args.length > 0 && (
+        <section>
+          <h2>Arguments</h2>
+          <DocsQueryArgs value={value as IQueryField} />
+        </section>
       )}
 
       {(value as IQueryField).__typename == '__Field' && (

@@ -2,7 +2,7 @@ import { IQueryField } from '@/interfaces/Docs';
 import { FC, useContext } from 'react';
 import { DocsContext } from '../DocsWindow/DocsWindow';
 import './DocsQueryField.scss';
-import DocsQueryType from '../DocsQueryType/DocsQueryType';
+import DocsQueryArgs from '../DocsQueryArgs/DocsQueryArgs';
 
 interface IDocsQueryFieldProps {
   field: IQueryField;
@@ -21,19 +21,7 @@ const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
         {field.name}
       </span>
       <span>(</span>
-      {field.args.length > 0 && (
-        <div className="query-field__args-container">
-          {field.args.map((arg, index) => (
-            <span key={index}>
-              <span className="query-arg">{arg.name}</span>
-              {': '}
-              <DocsQueryType
-                typeName={arg.type.name ? arg.type.name : arg.type.ofType!.name}
-              ></DocsQueryType>
-            </span>
-          ))}
-        </div>
-      )}
+      {field.args.length > 0 && <DocsQueryArgs value={field as IQueryField} />}
       <span>)</span>
     </div>
   );

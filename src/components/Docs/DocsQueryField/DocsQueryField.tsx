@@ -21,7 +21,9 @@ const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
         {field.name}
       </span>
       <span>(</span>
-      {field.args.length > 0 && <DocsQueryArgs value={field as IQueryField} />}
+      {field.args.length > 0 && (
+        <DocsQueryArgs value={field as IQueryField} className="query-field__args-container" />
+      )}
       <span>)</span>
     </div>
   );

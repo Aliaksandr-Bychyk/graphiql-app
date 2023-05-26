@@ -42,7 +42,7 @@ const DocsExplorer: FC = () => {
       {(value as IQueryField).args && (value as IQueryField).args.length > 0 && (
         <section>
           <h2>Arguments</h2>
-          <DocsQueryArgs value={value as IQueryField} />
+          <DocsQueryArgs value={value as IQueryField} className="docs-explorer__args-container" />
         </section>
       )}
 

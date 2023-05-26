@@ -11,7 +11,7 @@ const DocsExplorer: FC = () => {
   const { t } = useTranslation();
   const { value, setValue, home, history, historyDeep } = useContext(DocsContext);
   return (
-    <div>
+    <div className="docs-explorer">
       <div className="docs-explorer__nav">
         {!Array.isArray(value) && (
           <button
@@ -29,13 +29,15 @@ const DocsExplorer: FC = () => {
               : 'Schema'}
           </button>
         )}
-        <h2>{(value as IQueryType).name ?? t('documentationExplorer')}</h2>
+        <h3 className="docs-explorer__title">
+          {(value as IQueryType).name ?? t('documentationExplorer')}
+        </h3>
       </div>
 
       {(value as IQueryType).__typename == '__Type' ||
       (value as IQueryField).__typename == '__Field' ? (
         <section>
-          <h2>{t('description')}</h2>
+          <h3 className="docs-explorer__subtitle">{t('description')}</h3>
           {(value as IQueryType).__typename == '__Type' &&
             home!.find((el) => el.name == (value as IQueryField | IQueryType).name)!.description}
           {(value as IQueryField).__typename == '__Field' && (value as IQueryField).description}
@@ -46,7 +48,7 @@ const DocsExplorer: FC = () => {
 
       {(value as IQueryType).fields ? (
         <section>
-          <h2>{t('fields')}</h2>
+          <h3 className="docs-explorer__subtitle">{t('fields')}</h3>
           {(value as IQueryType).fields!.map((field, index) => (
             <DocsQueryField key={index} field={field} />
           ))}
@@ -57,14 +59,14 @@ const DocsExplorer: FC = () => {
 
       {(value as IQueryField).args && (value as IQueryField).args.length > 0 && (
         <section>
-          <h2>{t('arguments')}</h2>
+          <h3 className="docs-explorer__subtitle">{t('arguments')}</h3>
           <DocsQueryArgs value={value as IQueryField} className="docs-explorer__args-container" />
         </section>
       )}
 
       {(value as IQueryField).__typename == '__Field' && (
         <section>
-          <h2>{t('type')}</h2>
+          <h3 className="docs-explorer__subtitle">{t('type')}</h3>
           <DocsQueryType
             typeName={
               (value as IQueryField).type.name
@@ -77,7 +79,7 @@ const DocsExplorer: FC = () => {
 
       {Array.isArray(value) ? (
         <section className="docs-explorer__section">
-          <h2>{t('types')}</h2>
+          <h3 className="docs-explorer__title">{t('types')}</h3>
           {value.map((type, index: number) => (
             <DocsQueryType key={index} typeName={type.name} />
           ))}

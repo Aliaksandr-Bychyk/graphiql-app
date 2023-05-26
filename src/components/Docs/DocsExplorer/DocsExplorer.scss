@@ -1,11 +1,35 @@
-.docs-explorer__nav {
-  display: flex;
-}
-.docs-explorer__section {
-  display: flex;
-  flex-direction: column;
-}
-.docs-explorer__args-container {
-  display: flex;
-  flex-direction: column;
+@import '../../../variables.scss';
+
+.docs-explorer {
+  padding: 0 20px;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid transparentize($button-color, 0.7);
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    margin: 0;
+    height: 100%;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+
+  &__subtitle {
+    font-weight: 400;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__args-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

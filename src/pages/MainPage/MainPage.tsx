@@ -12,7 +12,7 @@ const MainPage: FC = () => {
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
 
-  const [isVar] = useState<boolean>(true);
+  const [isVar, setIsVar] = useState<boolean>(true);
 
   const runQuery = () => {};
 

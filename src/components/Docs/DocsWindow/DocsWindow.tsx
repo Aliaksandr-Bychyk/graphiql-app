@@ -13,6 +13,7 @@ import './DocsWindow.scss';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
 import DocsExplorer from '../DocsExplorer/DocsExplorer';
 import { getIntrospectionQuery } from 'graphql';
+import { useTranslation } from 'react-i18next';
 
 interface IDocsContext {
   value: IQueryType[] | IQueryType | IQueryField;
@@ -29,13 +30,19 @@ const DocsWindow: FC = () => {
   const [value, setValue] = useState<IQueryType[] | IQueryType | IQueryField>([]);
   const history = useRef<(IQueryType[] | IQueryField | IQueryType)[]>([]);
   const historyDeep = useRef(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     data && setValue(data.__schema.types);
   }, [data]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  if (loading) return <p>{t('loading')}</p>;
+  if (error)
+    return (
+      <p>
+        {t('error')}: {error.message}
+      </p>
+    );
 
   const home = data.__schema.types;
   return (

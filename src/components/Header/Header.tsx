@@ -1,11 +1,22 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Button from '../Buttons/Button/Button';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserAuth } from '@/context/AuthContext';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import './Header.scss';
-import { useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
-  const isUserAuth = true;
+  const userStore = useUserAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  function logOut() {
+    userStore?.logout();
+    navigate('/sign-in');
+  }
+
+  const [language, setLanguage] = useState<string>(localStorage.getItem('language') || 'en');
 
   useEffect(() => {
     window.onscroll = () => {
@@ -15,22 +26,43 @@ const Header: FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('language', language);
+    i18next.changeLanguage(language);
+  }, [language]);
+
   return (
     <header className="header">
       <div className="container header__container">
-        <select className="header__lang">
+        <select
+          className="header__lang"
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
           <option value="en" defaultChecked>
-            EN
+            {t('langEN')}
           </option>
-          <option value="ru">RU</option>
+          <option value="ru">{t('LangRU')}</option>
         </select>
-        {isUserAuth ? (
-          <div className="header__buttons">
-            <Button onClick={() => navigate('/sign-up')}>Sign up</Button>
-            <Button onClick={() => navigate('/sign-in')}>Sign in</Button>
-          </div>
+
+        {userStore?.loading ? (
+          <p className="app-loading">{t('Loading')}</p>
         ) : (
-          <Button>Sign out</Button>
+          <>
+            {userStore?.user ? (
+              <div className="header__buttons">
+                <Button>
+                  <Link to="/editor">{t('Editor')}</Link>
+                </Button>
+                <Button onClick={logOut}>{t('SignOut')}</Button>
+              </div>
+            ) : (
+              <div className="header__buttons">
+                <Button onClick={() => navigate('/sign-up')}>{t('SignUp')}</Button>
+                <Button onClick={() => navigate('/sign-in')}>{t('SignIn')}</Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </header>

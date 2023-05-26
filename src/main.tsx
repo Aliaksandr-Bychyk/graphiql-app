@@ -2,6 +2,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './index.scss';
+import { AuthContextProvider } from './context/AuthContext.tsx';
+import './i18n/i18n';
 
 const client = new ApolloClient({
   uri: 'https://graphql.anilist.co/',
@@ -10,6 +12,8 @@ const client = new ApolloClient({
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <ApolloProvider client={client}>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </ApolloProvider>
 );

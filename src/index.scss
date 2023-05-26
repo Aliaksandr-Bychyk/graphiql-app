@@ -44,6 +44,10 @@ button {
   padding: 0 $offset-desk;
 }
 
+.app-loading {
+  color: #ffffff;
+}
+
 @media screen and (max-width: $media-tab-pt) {
   .container {
     padding: 0 $offset-tab-pt;

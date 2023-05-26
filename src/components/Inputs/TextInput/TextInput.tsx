@@ -8,7 +8,7 @@ interface ITextInputProps<T extends FieldValues> {
   errors: FieldErrors<T>;
 }
 
-const regExp = new RegExp('(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-#$.%&@!+=<>*])');
+const regExp = new RegExp('(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-#$.%&@_!+=<>*])');
 
 const TextInput = <T extends FieldValues>({
   name,
@@ -19,15 +19,22 @@ const TextInput = <T extends FieldValues>({
   return (
     <label htmlFor={name}>
       <input
-        type={name === 'email' ? 'email' : 'text'}
+        type={name}
         className="text-input"
         id={name}
         placeholder={placeholder}
         {...register(name, {
           required: 'Value is required',
           minLength: { value: 8, message: 'Value should be at least 8 chars' },
-          validate: (value: string) =>
-            regExp.test(value) || 'Value should contain at least 1 letter, 1 digit, 1 special char',
+          validate: (value: string) => {
+            if (name == 'email') {
+              return;
+            }
+            return (
+              regExp.test(value) ||
+              'Value should contain at least 1 letter, 1 digit, 1 special char'
+            );
+          },
         })}
       />
       {errors[name] && (

@@ -18,7 +18,7 @@ const MainPage: FC = () => {
 
   return (
     <div className="main">
-      <div className="container main__container">
+      <div className="main__container">
         <div className="main__documentation">
           <DocsWindow />
         </div>

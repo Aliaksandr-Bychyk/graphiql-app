@@ -7,12 +7,26 @@ import DocsQueryField from '../DocsQueryField/DocsQueryField';
 import DocsQueryArgs from '../DocsQueryArgs/DocsQueryArgs';
 
 const DocsExplorer: FC = () => {
-  const { value, setValue, home } = useContext(DocsContext);
-  console.log(value);
+  const { value, setValue, home, history, historyDeep } = useContext(DocsContext);
   return (
     <div>
       <div className="docs-explorer__nav">
-        {!Array.isArray(value) && <button onClick={() => setValue!(home!)}>H</button>}
+        {!Array.isArray(value) && (
+          <button
+            onClick={() => {
+              historyDeep!.current -= 1;
+              history!.current.pop();
+              setValue!(
+                history!.current.length > 0 ? history!.current[history!.current.length - 1] : home!
+              );
+            }}
+          >
+            &lt;
+            {history!.current.length > 1
+              ? (history!.current[history!.current.length - 2] as IQueryType | IQueryField).name
+              : 'Schema'}
+          </button>
+        )}
         <h2>{(value as IQueryType).name ?? 'Documentation Explorer'}</h2>
       </div>
 

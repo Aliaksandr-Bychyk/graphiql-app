@@ -9,13 +9,15 @@ interface IDocsQueryFieldProps {
 }
 
 const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
-  const { setValue } = useContext(DocsContext);
+  const { setValue, historyDeep, history } = useContext(DocsContext);
   return (
     <div className="query-field-container">
       <span
         className="query-field"
         onClick={() => {
           setValue!(field);
+          historyDeep!.current += 1;
+          history!.current.push(field as IQueryField);
         }}
       >
         {field.name}

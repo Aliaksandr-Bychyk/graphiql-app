@@ -15,6 +15,7 @@ const DocsExplorer: FC = () => {
       <div className="docs-explorer__nav">
         {!Array.isArray(value) && (
           <button
+            className="docs-explorer__btn"
             onClick={() => {
               historyDeep!.current -= 1;
               history!.current.pop();
@@ -22,12 +23,7 @@ const DocsExplorer: FC = () => {
                 history!.current.length > 0 ? history!.current[history!.current.length - 1] : home!
               );
             }}
-          >
-            &lt;
-            {history!.current.length > 1
-              ? (history!.current[history!.current.length - 2] as IQueryType | IQueryField).name
-              : 'Schema'}
-          </button>
+          />
         )}
         <h3 className="docs-explorer__title">
           {(value as IQueryType).name ?? t('documentationExplorer')}
@@ -37,7 +33,7 @@ const DocsExplorer: FC = () => {
       {(value as IQueryType).__typename == '__Type' ||
       (value as IQueryField).__typename == '__Field' ? (
         <section>
-          <h3 className="docs-explorer__subtitle">{t('description')}</h3>
+          <h3 className="docs-explorer__title">{t('description')}</h3>
           {(value as IQueryType).__typename == '__Type' &&
             home!.find((el) => el.name == (value as IQueryField | IQueryType).name)!.description}
           {(value as IQueryField).__typename == '__Field' && (value as IQueryField).description}
@@ -48,7 +44,7 @@ const DocsExplorer: FC = () => {
 
       {(value as IQueryType).fields ? (
         <section>
-          <h3 className="docs-explorer__subtitle">{t('fields')}</h3>
+          <h3 className="docs-explorer__title">{t('fields')}</h3>
           {(value as IQueryType).fields!.map((field, index) => (
             <DocsQueryField key={index} field={field} />
           ))}
@@ -59,14 +55,14 @@ const DocsExplorer: FC = () => {
 
       {(value as IQueryField).args && (value as IQueryField).args.length > 0 && (
         <section>
-          <h3 className="docs-explorer__subtitle">{t('arguments')}</h3>
+          <h3 className="docs-explorer__title">{t('arguments')}</h3>
           <DocsQueryArgs value={value as IQueryField} className="docs-explorer__args-container" />
         </section>
       )}
 
       {(value as IQueryField).__typename == '__Field' && (
         <section>
-          <h3 className="docs-explorer__subtitle">{t('type')}</h3>
+          <h3 className="docs-explorer__title">{t('type')}</h3>
           <DocsQueryType
             typeName={
               (value as IQueryField).type.name

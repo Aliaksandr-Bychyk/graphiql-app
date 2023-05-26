@@ -11,15 +11,17 @@
     margin-bottom: 10px;
   }
 
-  &__title {
-    margin: 0;
-    height: 100%;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
+  &__btn {
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    background: no-repeat url('../../../assets/svg/back.svg');
+    background-size: 15px 15px;
+    color: $light-color;
+    cursor: pointer;
   }
 
-  &__subtitle {
+  &__title {
     font-weight: 400;
   }
 

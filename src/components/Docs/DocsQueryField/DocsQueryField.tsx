@@ -27,8 +27,9 @@ const DocsQueryField: FC<IDocsQueryFieldProps> = ({ field }) => {
             <span key={index}>
               <span className="query-arg">{arg.name}</span>
               {': '}
-              <DocsQueryType type={arg.type}></DocsQueryType>
-              {/* <span className="">{arg.type.name}</span> */}
+              <DocsQueryType
+                typeName={arg.type.name ? arg.type.name : arg.type.ofType!.name}
+              ></DocsQueryType>
             </span>
           ))}
         </div>

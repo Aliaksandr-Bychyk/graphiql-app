@@ -8,7 +8,7 @@ const MainPage: FC = () => {
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
 
-  const [isVar, setIsVar] = useState<boolean>(true);
+  const [isVar] = useState<boolean>(true);
 
   return (
     <div className="main">

@@ -1,22 +1,24 @@
-import { IQueryType } from '@/interfaces/Docs';
 import { FC, useContext } from 'react';
 import { DocsContext } from '../DocsWindow/DocsWindow';
 import './DocsQueryType.scss';
 
 interface IDocsQueryTypeProps {
-  type: IQueryType;
+  typeName: string;
 }
 
-const DocsQueryType: FC<IDocsQueryTypeProps> = ({ type }) => {
+const DocsQueryType: FC<IDocsQueryTypeProps> = ({ typeName }) => {
   const { setValue } = useContext(DocsContext);
+  const { home } = useContext(DocsContext);
+  const type = home!.find((el) => el.name == typeName);
+
   return (
     <span
       className="query-type"
       onClick={() => {
-        setValue!(type);
+        setValue!(type!);
       }}
     >
-      {type.name}
+      {type!.name}
     </span>
   );
 };

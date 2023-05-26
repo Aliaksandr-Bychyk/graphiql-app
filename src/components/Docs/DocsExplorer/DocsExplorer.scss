@@ -1,7 +1,24 @@
 @import '../../../variables.scss';
 
 .docs-explorer {
-  padding: 0 40px;
+  padding: 0 40px 20px;
+  max-height: 780px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $block-color;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-type-color;
+    border-radius: 20px;
+  }
 
   &__nav {
     display: flex;

@@ -12,8 +12,22 @@ const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<WelcomePage />} />
+        <Route
+          path="/"
+          element={
+            <ErrorBoundary>
+              <Layout />
+            </ErrorBoundary>
+          }
+        >
+          <Route
+            index
+            element={
+              <ErrorBoundary>
+                <WelcomePage />
+              </ErrorBoundary>
+            }
+          />
           <Route
             path="sign-up"
             element={

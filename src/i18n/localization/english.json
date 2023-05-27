@@ -24,5 +24,12 @@
   "operation": "Operation",
   "variables": "Variables",
   "headers": "Headers",
-  "response": "Response"
+  "response": "Response",
+  "error": "Error",
+  "documentationExplorer": "Documentation Explorer",
+  "description": "Description",
+  "fields": "Fields",
+  "arguments": "Arguments",
+  "type": "Type",
+  "types": "Types"
 }

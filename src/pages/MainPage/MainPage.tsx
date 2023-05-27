@@ -12,13 +12,13 @@ const MainPage: FC = () => {
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
 
-  const [isVar] = useState<boolean>(true);
+  const [isVar, setIsVar] = useState<boolean>(true);
 
   const runQuery = () => {};
 
   return (
     <div className="main">
-      <div className="container main__container">
+      <div className="main__container">
         <div className="main__documentation">
           <DocsWindow />
         </div>

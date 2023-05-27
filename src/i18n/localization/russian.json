@@ -24,5 +24,12 @@
   "operation": "Запрос",
   "variables": "Переменные",
   "headers": "Заголовки",
-  "response": "Ответ"
+  "response": "Ответ",
+  "error": "Ошибка",
+  "documentationExplorer": "Документация",
+  "description": "Описание",
+  "fields": "Поля",
+  "arguments": "Аргументы",
+  "type": "Тип",
+  "types": "Типы"
 }

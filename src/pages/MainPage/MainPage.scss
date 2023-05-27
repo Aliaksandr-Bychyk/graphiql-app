@@ -12,6 +12,7 @@
 
   &__documentation {
     background-color: $editor-color;
+    padding-bottom: 20px;
   }
 }
 
@@ -38,8 +39,6 @@
 
 @media screen and (max-width: $media-tab-pt) {
   .main {
-    padding: 30px 0;
-
     &__container {
       grid-template-columns: 100%;
     }

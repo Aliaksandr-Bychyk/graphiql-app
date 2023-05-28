@@ -12,14 +12,24 @@ const MainPage: FC = () => {
   const [operationValue, setOperationValue] = useState<string>('');
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
-  const [query, setQuery] = useState<DocumentNode | undefined>();
   const [isVar, setIsVar] = useState<boolean>(true);
+
+  interface IResponseValue {
+    query?: DocumentNode;
+    headers?: string;
+    variable?: string;
+  }
+  const [responseValue, setResponseValue] = useState<IResponseValue>();
 
   const runQuery = () => {
     if (operationValue) {
-      setQuery(gql`
-        ${operationValue}
-      `);
+      setResponseValue({
+        query: gql`
+          ${operationValue}
+        `,
+        headers: headersValue ? JSON.parse(headersValue) : '',
+        variable: variablesValue ? JSON.parse(variablesValue) : '',
+      });
     }
   };
 
@@ -53,11 +63,11 @@ const MainPage: FC = () => {
           <div className="response__header">
             <h3 className="response__title">{t('response')}</h3>
           </div>
-          {query && (
+          {responseValue?.query && (
             <Response
-              query={query}
-              variables={variablesValue ? JSON.parse(variablesValue) : variablesValue}
-              headers={headersValue ? JSON.parse(headersValue) : headersValue}
+              query={responseValue?.query}
+              variables={responseValue!.variable!}
+              headers={responseValue!.headers!}
             />
           )}
         </div>

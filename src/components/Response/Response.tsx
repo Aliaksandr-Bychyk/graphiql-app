@@ -9,8 +9,8 @@ import './Response.scss';
 
 interface IResponseProps {
   query: DocumentNode;
-  variables: object;
-  headers: object;
+  variables: string;
+  headers: string;
 }
 
 const Response: FC<IResponseProps> = ({ query, variables, headers }) => {

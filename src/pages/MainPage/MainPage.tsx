@@ -1,4 +1,4 @@
-import { DocumentNode, gql } from '@apollo/client';
+import { DocumentNode, OperationVariables, gql } from '@apollo/client';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Editor from './../../components/Editor/Editor';
@@ -10,7 +10,7 @@ import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
 interface IResponseValue {
   query?: DocumentNode | null;
   headers?: string;
-  variable?: string;
+  variable?: OperationVariables;
   error?: string;
 }
 

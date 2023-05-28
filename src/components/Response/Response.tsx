@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { DocumentNode, useQuery } from '@apollo/client';
+import { DocumentNode, OperationVariables, useQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
@@ -9,7 +9,7 @@ import './Response.scss';
 
 interface IResponseProps {
   query: DocumentNode;
-  variables: string;
+  variables: OperationVariables;
   headers: string;
 }
 
@@ -17,7 +17,7 @@ const Response: FC<IResponseProps> = ({ query, variables, headers }) => {
   const { t } = useTranslation();
 
   const { loading, error, data } = useQuery(query, {
-    variables: { variables },
+    variables: variables,
     context: { headers: headers },
   });
 

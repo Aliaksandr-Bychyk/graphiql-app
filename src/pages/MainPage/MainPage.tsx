@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Editor from './../../components/Editor/Editor';
 import RunButton from '../../components/Buttons/RunButton/RunButton';
 import './MainPage.scss';
+import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
 
 const MainPage: FC = () => {
   const { t } = useTranslation();
@@ -17,8 +18,10 @@ const MainPage: FC = () => {
 
   return (
     <div className="main">
-      <div className="container main__container">
-        <div className="main__documentation">{t('documentation')}</div>
+      <div className="main__container">
+        <div className="main__documentation">
+          <DocsWindow />
+        </div>
         <div className="main__editors">
           <Editor title={t('operation')} onChange={setOperationValue} value={operationValue}>
             <RunButton handleClick={runQuery} />

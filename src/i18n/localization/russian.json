@@ -26,5 +26,12 @@
   "headers": "Заголовки",
   "response": "Ответ",
   "errorBoundary": "Что то пошло не так",
-  "checkConsole": "Провертье консоль"
+  "checkConsole": "Провертье консоль",
+  "error": "Ошибка",
+  "documentationExplorer": "Документация",
+  "description": "Описание",
+  "fields": "Поля",
+  "arguments": "Аргументы",
+  "type": "Тип",
+  "types": "Типы"
 }

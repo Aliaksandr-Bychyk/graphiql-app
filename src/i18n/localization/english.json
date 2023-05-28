@@ -26,5 +26,12 @@
   "headers": "Headers",
   "response": "Response",
   "errorBoundary": "Something went wrong",
-  "checkConsole": " Check the console"
+  "checkConsole": " Check the console",
+  "error": "Error",
+  "documentationExplorer": "Documentation Explorer",
+  "description": "Description",
+  "fields": "Fields",
+  "arguments": "Arguments",
+  "type": "Type",
+  "types": "Types"
 }

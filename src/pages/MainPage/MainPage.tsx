@@ -39,9 +39,6 @@ const MainPage: FC = () => {
     <div className="main">
       <div className="main__container">
         <DocsWindow />
-        {/* <div className="main__documentation">
-          <DocsWindow />
-        </div> */}
         <div className="main__editors">
           <Editor title={t('operation')} onChange={setOperationValue} value={operationValue}>
             <RunButton handleClick={runQuery} />

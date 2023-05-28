@@ -7,13 +7,14 @@ import AuthRegPage from './pages/AuthRegPage/AuthRegPage';
 import MainPage from './pages/MainPage/MainPage';
 import ProtectedRoute from './helper/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { RoutePath } from './routes/route';
 
 const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path={RoutePath.HOME}
           element={
             <ErrorBoundary>
               <Layout />
@@ -29,7 +30,7 @@ const App: FC = () => {
             }
           />
           <Route
-            path="sign-up"
+            path={RoutePath.SIGN_UP}
             element={
               <ProtectedRoute isReg={true}>
                 <ErrorBoundary>
@@ -39,7 +40,7 @@ const App: FC = () => {
             }
           />
           <Route
-            path="sign-in"
+            path={RoutePath.LOGIN}
             element={
               <ProtectedRoute isReg={false}>
                 <ErrorBoundary>
@@ -50,7 +51,7 @@ const App: FC = () => {
           />
           <Route path="*" element={<NotFoundPage />} />
           <Route
-            path="/editor"
+            path={RoutePath.EDITOR}
             element={
               <ProtectedRoute>
                 <ErrorBoundary>

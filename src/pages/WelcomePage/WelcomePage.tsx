@@ -7,6 +7,7 @@ import NursIcon from '@/assets/Nurs.png';
 import { useNavigate } from 'react-router-dom';
 
 import './WelcomePage.scss';
+import { RoutePath } from '@/routes/route';
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const WelcomePage = () => {
           <div className="welcome__info info">
             <img className="info__logo" src={WelcomeLogo} alt="Welcome logo" />
             <h2 className="info__title">{t('appDesc')}</h2>
-            <Button onClick={() => navigate('/editor')}>{t('tryBtn')}</Button>
+            <Button onClick={() => navigate(RoutePath.EDITOR)}>{t('tryBtn')}</Button>
           </div>
 
           <div className="welcome__developers dev">

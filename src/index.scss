@@ -15,6 +15,19 @@
 body {
   margin: 0;
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $block-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-type-color;
+    border-radius: 20px;
+  }
 }
 
 html {

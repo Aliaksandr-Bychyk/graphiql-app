@@ -45,6 +45,10 @@
       grid-template-columns: 100%;
     }
   }
+
+  .response {
+    min-height: 300px;
+  }
 }
 
 @media screen and (max-width: $media-tab) {

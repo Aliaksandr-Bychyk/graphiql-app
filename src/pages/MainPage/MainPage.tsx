@@ -1,9 +1,17 @@
+import { DocumentNode, gql } from '@apollo/client';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Editor from './../../components/Editor/Editor';
 import RunButton from '../../components/Buttons/RunButton/RunButton';
+import Response from '../../components/Response/Response';
 import './MainPage.scss';
 import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
+
+interface IResponseValue {
+  query?: DocumentNode;
+  headers?: string;
+  variable?: string;
+}
 
 const MainPage: FC = () => {
   const { t } = useTranslation();
@@ -11,10 +19,21 @@ const MainPage: FC = () => {
   const [operationValue, setOperationValue] = useState<string>('');
   const [variablesValue, setVariablesValue] = useState<string>('');
   const [headersValue, setHeadersValue] = useState<string>('');
-
   const [isVar, setIsVar] = useState<boolean>(true);
 
-  const runQuery = () => {};
+  const [responseValue, setResponseValue] = useState<IResponseValue>();
+
+  const runQuery = () => {
+    if (operationValue) {
+      setResponseValue({
+        query: gql`
+          ${operationValue}
+        `,
+        headers: headersValue ? JSON.parse(headersValue) : '',
+        variable: variablesValue ? JSON.parse(variablesValue) : '',
+      });
+    }
+  };
 
   return (
     <div className="main">
@@ -44,7 +63,18 @@ const MainPage: FC = () => {
             />
           )}
         </div>
-        <div className="main__response">{t('response')}</div>
+        <div className="response">
+          <div className="response__header">
+            <h3 className="response__title">{t('response')}</h3>
+          </div>
+          {responseValue?.query && (
+            <Response
+              query={responseValue?.query}
+              variables={responseValue!.variable!}
+              headers={responseValue!.headers!}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

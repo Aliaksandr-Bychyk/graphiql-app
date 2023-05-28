@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import Button from '../Buttons/Button/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import './Header.scss';
 const Header: FC = () => {
   const userStore = useUserAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
 
   function logOut() {
@@ -52,9 +53,15 @@ const Header: FC = () => {
           <>
             {userStore?.user ? (
               <div className="header__buttons">
-                <Button>
-                  <Link to={RoutePath.EDITOR}>{t('Editor')}</Link>
-                </Button>
+                {location.pathname !== RoutePath.EDITOR ? (
+                  <Button>
+                    <Link to={RoutePath.EDITOR}>{t('Editor')}</Link>
+                  </Button>
+                ) : (
+                  <Button>
+                    <Link to={RoutePath.HOME}>{t('404Btn')}</Link>
+                  </Button>
+                )}
                 <Button onClick={logOut}>{t('SignOut')}</Button>
               </div>
             ) : (

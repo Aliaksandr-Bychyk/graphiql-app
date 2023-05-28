@@ -18,11 +18,20 @@
   "email": "Email...",
   "password": "Password...",
   "authQuestion": "Do you already have an account?",
+  "regQuestion": "Haven't you registered yet?",
   "submit": "Submit",
   "documentation": "Documentation",
   "operation": "Operation",
   "variables": "Variables",
   "headers": "Headers",
   "response": "Response",
-  "error": "Error"
+  "errorBoundary": "Something went wrong",
+  "checkConsole": " Check the console",
+  "error": "Error",
+  "documentationExplorer": "Documentation Explorer",
+  "description": "Description",
+  "fields": "Fields",
+  "arguments": "Arguments",
+  "type": "Type",
+  "types": "Types"
 }

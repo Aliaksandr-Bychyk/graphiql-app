@@ -1,0 +1,17 @@
+@import '../../../variables.scss';
+
+.query-field-container {
+  margin: 0 0 10px 0;
+}
+.query-field {
+  color: $text-field-color;
+  cursor: pointer;
+}
+.query-field__args-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 10px;
+}
+.query-arg {
+  color: $text-arg-color;
+}

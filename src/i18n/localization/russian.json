@@ -18,11 +18,20 @@
   "email": "Почта...",
   "password": "Пароль...",
   "authQuestion": "Уже есть аккаунт?",
+  "regQuestion": "Еще не зарегистрировались?",
   "submit": "Отправить",
   "documentation": "Документация",
   "operation": "Запрос",
   "variables": "Переменные",
   "headers": "Заголовки",
   "response": "Ответ",
-  "error": "Ошибка"
+  "errorBoundary": "Что то пошло не так",
+  "checkConsole": "Провертье консоль",
+  "error": "Ошибка",
+  "documentationExplorer": "Документация",
+  "description": "Описание",
+  "fields": "Поля",
+  "arguments": "Аргументы",
+  "type": "Тип",
+  "types": "Типы"
 }

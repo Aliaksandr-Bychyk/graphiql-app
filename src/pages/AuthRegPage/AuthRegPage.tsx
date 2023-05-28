@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import TextInput from '../../components/Inputs/TextInput/TextInput';
 import SubmitInput from '../../components/Inputs/SubmitInput/SubmitInput';
-import './AuthRegPage.scss';
+import { ErrorMessage } from '@hookform/error-message';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useUserAuth } from '@/context/AuthContext';
-
+import { FirebaseError } from 'firebase/app';
+import './AuthRegPage.scss';
 export interface IFormInputs {
+  root: string;
   email: string;
   password: string;
 }
@@ -17,6 +19,7 @@ const AuthRegPage: FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<IFormInputs>({
     mode: 'onSubmit',
@@ -35,7 +38,9 @@ const AuthRegPage: FC = () => {
       await userStore?.signIn(data.email, data.password);
       navigate('/editor');
     } catch (error) {
-      console.log(error);
+      if (error instanceof FirebaseError) {
+        setError('root', { type: 'manual', message: error.code });
+      }
     }
   };
 
@@ -44,7 +49,9 @@ const AuthRegPage: FC = () => {
       await userStore?.createUser(data.email, data.password);
       navigate('/editor');
     } catch (error) {
-      console.log(error);
+      if (error instanceof FirebaseError) {
+        setError('root', { type: 'manual', message: error.code });
+      }
     }
   };
 
@@ -69,13 +76,25 @@ const AuthRegPage: FC = () => {
               register={register}
               errors={errors}
             />
+            <ErrorMessage
+              errors={errors}
+              name="root"
+              render={({ message }) => <span className="text-input__error">{message}</span>}
+            />
             <SubmitInput disabled={userStore!.loading} />
           </form>
-          {isReg && (
+          {isReg ? (
             <div className="auth-reg__question">
               {t('authQuestion')}&nbsp;
               <span className="auth-reg__link" onClick={() => navigate('/sign-in')}>
                 {t('SignIn')}
+              </span>
+            </div>
+          ) : (
+            <div className="auth-reg__question">
+              {t('regQuestion')}&nbsp;
+              <span className="auth-reg__link" onClick={() => navigate('/sign-up')}>
+                {t('SignUp')}
               </span>
             </div>
           )}

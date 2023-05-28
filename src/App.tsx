@@ -6,18 +6,35 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import AuthRegPage from './pages/AuthRegPage/AuthRegPage';
 import MainPage from './pages/MainPage/MainPage';
 import ProtectedRoute from './helper/ProtectedRoute';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<WelcomePage />} />
+        <Route
+          path="/"
+          element={
+            <ErrorBoundary>
+              <Layout />
+            </ErrorBoundary>
+          }
+        >
+          <Route
+            index
+            element={
+              <ErrorBoundary>
+                <WelcomePage />
+              </ErrorBoundary>
+            }
+          />
           <Route
             path="sign-up"
             element={
               <ProtectedRoute isReg={true}>
-                <AuthRegPage />
+                <ErrorBoundary>
+                  <AuthRegPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -25,7 +42,9 @@ const App: FC = () => {
             path="sign-in"
             element={
               <ProtectedRoute isReg={false}>
-                <AuthRegPage />
+                <ErrorBoundary>
+                  <AuthRegPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -34,7 +53,9 @@ const App: FC = () => {
             path="/editor"
             element={
               <ProtectedRoute>
-                <MainPage />
+                <ErrorBoundary>
+                  <MainPage />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",
+    "@hookform/error-message": "^2.0.1",
     "codemirror": "^5.65.13",
     "firebase": "^9.21.0",
     "graphql": "^16.6.0",

@@ -7,6 +7,12 @@ import Response from '../../components/Response/Response';
 import './MainPage.scss';
 import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
 
+interface IResponseValue {
+  query?: DocumentNode;
+  headers?: string;
+  variable?: string;
+}
+
 const MainPage: FC = () => {
   const { t } = useTranslation();
 
@@ -15,11 +21,6 @@ const MainPage: FC = () => {
   const [headersValue, setHeadersValue] = useState<string>('');
   const [isVar, setIsVar] = useState<boolean>(true);
 
-  interface IResponseValue {
-    query?: DocumentNode;
-    headers?: string;
-    variable?: string;
-  }
   const [responseValue, setResponseValue] = useState<IResponseValue>();
 
   const runQuery = () => {

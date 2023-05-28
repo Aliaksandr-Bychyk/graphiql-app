@@ -6,12 +6,14 @@
 
   &__container {
     display: grid;
-    grid-template-columns: 23% 50% 24%;
-    gap: 15px;
+    grid-template-columns: 24% 50% 24%;
+    gap: 1%;
   }
 
-  &__documentation {
+  &__documentation,
+  &__editors {
     background-color: $editor-color;
+    padding-bottom: 20px;
   }
 }
 
@@ -20,6 +22,7 @@
   background-color: $editor-color;
 
   &__header {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,5 +36,23 @@
     font-weight: 400;
     display: flex;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: $media-tab-pt) {
+  .main {
+    &__container {
+      grid-template-columns: 100%;
+    }
+  }
+
+  .response {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .response__title {
+    font-size: 16px;
   }
 }

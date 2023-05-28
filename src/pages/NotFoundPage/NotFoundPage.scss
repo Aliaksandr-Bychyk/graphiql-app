@@ -23,3 +23,29 @@
     margin: auto;
   }
 }
+
+@media screen and (max-width: $media-tab) {
+  .not-found {
+    &__title {
+      font-size: 100px;
+    }
+
+    &__subtitle {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-mob) {
+  .not-found {
+    &__title {
+      font-size: 50px;
+    }
+
+    &__subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  }
+}

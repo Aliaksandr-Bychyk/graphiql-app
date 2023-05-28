@@ -36,10 +36,10 @@ const DocsWindow: FC = () => {
     data && setValue(data.__schema.types);
   }, [data]);
 
-  if (loading) return <p>{t('loading')}</p>;
+  if (loading) return <p className="docs__info">{t('Loading')}</p>;
   if (error)
     return (
-      <p>
+      <p className="docs__info">
         {t('error')}: {error.message}
       </p>
     );

@@ -10,7 +10,8 @@
     gap: 15px;
   }
 
-  &__documentation {
+  &__documentation,
+  &__editors {
     background-color: $editor-color;
     padding-bottom: 20px;
   }

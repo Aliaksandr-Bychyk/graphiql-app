@@ -4,16 +4,19 @@ import {
   FC,
   MutableRefObject,
   SetStateAction,
+  Suspense,
   createContext,
+  lazy,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import './DocsWindow.scss';
 import { IQueryField, IQueryType } from '@/interfaces/Docs';
-import DocsExplorer from '../DocsExplorer/DocsExplorer';
 import { getIntrospectionQuery } from 'graphql';
 import { useTranslation } from 'react-i18next';
+
+const DocsExplorer = lazy(() => import('../DocsExplorer/DocsExplorer'));
 
 interface IDocsContext {
   value: IQueryType[] | IQueryType | IQueryField;
@@ -36,19 +39,17 @@ const DocsWindow: FC = () => {
     data && setValue(data.__schema.types);
   }, [data]);
 
-  if (loading) return <p className="docs__info">{t('Loading')}</p>;
-  if (error)
-    return (
-      <p className="docs__info">
-        {t('error')}: {error.message}
-      </p>
-    );
+  if (loading || error) return <></>;
 
   const home = data.__schema.types;
   return (
     <DocsContext.Provider value={{ value, setValue, home, history, historyDeep }}>
-      <div className="docs">
-        <DocsExplorer />
+      <div className="main__documentation">
+        <div className="docs">
+          <Suspense fallback={<p className="docs__info">{t('Loading')}</p>}>
+            <DocsExplorer />
+          </Suspense>
+        </div>
       </div>
     </DocsContext.Provider>
   );

@@ -34,7 +34,7 @@ const Header: FC = () => {
 
   return (
     <header className="header">
-      <div className="container header__container">
+      <nav className="container header__container">
         <select
           className="header__lang"
           value={language}
@@ -65,7 +65,7 @@ const Header: FC = () => {
             )}
           </>
         )}
-      </div>
+      </nav>
     </header>
   );
 };

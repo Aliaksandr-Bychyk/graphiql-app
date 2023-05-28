@@ -1,0 +1,67 @@
+@import '../../variables.scss';
+
+.main {
+  min-height: 100vh;
+  background-color: $main-bg-color;
+
+  &__container {
+    display: flex;
+    gap: 1%;
+  }
+
+  &__editors {
+    flex: 2;
+  }
+  &__documentation {
+    flex: 1;
+  }
+
+  &__documentation,
+  &__editors {
+    background-color: $editor-color;
+    padding-bottom: 20px;
+    transition: 0.4s all ease;
+  }
+}
+
+.response {
+  flex: 1;
+  padding: 0 40px;
+  background-color: $editor-color;
+  transition: 0.4s all ease;
+
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid transparentize($button-color, 0.7);
+  }
+
+  &__title {
+    margin: 0;
+    height: 100%;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: $media-tab-pt) {
+  .main {
+    &__container {
+      flex-direction: column;
+    }
+  }
+
+  .response {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .response__title {
+    font-size: 16px;
+  }
+}

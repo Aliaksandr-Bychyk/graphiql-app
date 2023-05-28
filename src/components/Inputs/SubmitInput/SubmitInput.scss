@@ -1,0 +1,24 @@
+@import '../../../variables.scss';
+
+.submit-input {
+  padding: 10px;
+  background-color: $button-color;
+  border-radius: 20px;
+  color: $main-bg-color;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    border: 3px solid $button-color;
+    color: $light-color;
+    transition: 0.4s all ease;
+  }
+
+  &:disabled {
+    background-color: rgba(180, 195, 219, 0.5);
+    color: $main-bg-color;
+    border: none;
+    cursor: default;
+  }
+}

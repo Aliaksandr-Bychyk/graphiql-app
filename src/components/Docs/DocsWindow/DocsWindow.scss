@@ -1,0 +1,9 @@
+.docs {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    padding-left: 20px;
+    font-size: 18px;
+  }
+}

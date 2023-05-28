@@ -1,0 +1,85 @@
+@import './variables.scss';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $block-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $text-type-color;
+    border-radius: 20px;
+  }
+}
+
+html {
+  font-size: 16px;
+  color: $light-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+}
+
+.container {
+  max-width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0 $offset-desk;
+}
+
+.app-loading {
+  color: #ffffff;
+}
+
+@media screen and (max-width: $media-tab-pt) {
+  .container {
+    padding: 0 $offset-tab-pt;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .container {
+    padding: 0 $offset-tab;
+  }
+}
+
+@media screen and (max-width: $media-mob) {
+  .container {
+    padding: 0 $offset-mob;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../../variables.scss';
+
+.button {
+  padding: 9px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: none;
+  background-color: $button-color;
+  color: $main-bg-color;
+  font-size: 20px;
+  font-weight: 500;
+  border: 3px solid $button-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    border: 3px solid $button-color;
+    color: $light-color;
+    transition: 0.4s all ease;
+  }
+
+  &:disabled {
+    background-color: rgba(180, 195, 219, 0.5);
+    color: $main-bg-color;
+    border: none;
+    cursor: default;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .button {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+.error-boundary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-bg-color;
+  min-height: 100vh;
+
+  &__title {
+    font-size: $offset-tab;
+  }
+}

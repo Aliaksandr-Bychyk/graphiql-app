@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: $block-color;
+  position: relative;
+  z-index: 1;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+    color: $main-bg-color;
+    align-items: center;
+  }
+
+  &__lang {
+    box-sizing: border-box;
+    padding: 9px;
+    border-radius: 10px;
+    border: none;
+    background-color: $button-color;
+    color: $main-bg-color;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  height: 60px;
+  transition: all 0.5s ease;
+  background-color: rgba(56, 61, 91, 0.5);
+}
+
+@media screen and (max-width: $media-tab) {
+  .header {
+    &__lang {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    &__buttons {
+      gap: 10px;
+    }
+  }
+}

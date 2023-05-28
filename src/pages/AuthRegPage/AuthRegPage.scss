@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.auth-reg {
+  min-height: 100vh;
+  background-color: $main-bg-color;
+
+  &__wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0 0 50px;
+    font-size: 42px;
+  }
+
+  &__form {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__question {
+    margin: 20px 0 0 0;
+  }
+
+  &__link {
+    cursor: pointer;
+    color: $button-color;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+      transition: 0.4s all ease;
+    }
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .auth-reg__question {
+    font-size: 14px;
+  }
+}

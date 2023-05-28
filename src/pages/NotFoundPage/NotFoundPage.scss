@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+.not-found {
+  padding: 100px 0;
+  min-height: 100vh;
+  background-color: $main-bg-color;
+
+  &__title {
+    text-align: center;
+    font-size: 170px;
+    line-height: 1;
+    margin: 0;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 100px;
+  }
+
+  &__btn {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .not-found {
+    &__title {
+      font-size: 100px;
+    }
+
+    &__subtitle {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-mob) {
+  .not-found {
+    &__title {
+      font-size: 50px;
+    }
+
+    &__subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  }
+}

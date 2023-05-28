@@ -51,7 +51,7 @@
 @media screen and (max-width: $media-tab-pt) {
   .main {
     &__container {
-      grid-template-columns: 100%;
+      flex-direction: column;
     }
   }
 

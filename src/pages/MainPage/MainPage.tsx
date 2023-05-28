@@ -8,9 +8,10 @@ import './MainPage.scss';
 import DocsWindow from '@/components/Docs/DocsWindow/DocsWindow';
 
 interface IResponseValue {
-  query?: DocumentNode;
+  query?: DocumentNode | null;
   headers?: string;
   variable?: string;
+  error?: string;
 }
 
 const MainPage: FC = () => {
@@ -24,14 +25,24 @@ const MainPage: FC = () => {
   const [responseValue, setResponseValue] = useState<IResponseValue>();
 
   const runQuery = () => {
-    if (operationValue) {
-      setResponseValue({
-        query: gql`
-          ${operationValue}
-        `,
-        headers: headersValue ? JSON.parse(headersValue) : '',
-        variable: variablesValue ? JSON.parse(variablesValue) : '',
-      });
+    try {
+      if (operationValue) {
+        setResponseValue({
+          query: gql`
+            ${operationValue}
+          `,
+          headers: headersValue ? JSON.parse(headersValue) : '',
+          variable: variablesValue ? JSON.parse(variablesValue) : '',
+          error: undefined,
+        });
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setResponseValue({
+          query: null,
+          error: error.message,
+        });
+      }
     }
   };
 
@@ -71,6 +82,11 @@ const MainPage: FC = () => {
               variables={responseValue!.variable!}
               headers={responseValue!.headers!}
             />
+          )}
+          {responseValue?.error && (
+            <p className="response__info">
+              {t('error')}: {responseValue!.error!}
+            </p>
           )}
         </div>
       </div>

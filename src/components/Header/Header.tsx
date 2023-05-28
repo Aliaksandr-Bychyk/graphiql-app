@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { RoutePath } from '@/routes/route';
 import './Header.scss';
 
 const Header: FC = () => {
@@ -13,7 +14,7 @@ const Header: FC = () => {
 
   function logOut() {
     userStore?.logout();
-    navigate('/sign-in');
+    navigate(RoutePath.LOGIN);
   }
 
   const [language, setLanguage] = useState<string>(localStorage.getItem('language') || 'en');
@@ -52,14 +53,14 @@ const Header: FC = () => {
             {userStore?.user ? (
               <div className="header__buttons">
                 <Button>
-                  <Link to="/editor">{t('Editor')}</Link>
+                  <Link to={RoutePath.EDITOR}>{t('Editor')}</Link>
                 </Button>
                 <Button onClick={logOut}>{t('SignOut')}</Button>
               </div>
             ) : (
               <div className="header__buttons">
-                <Button onClick={() => navigate('/sign-up')}>{t('SignUp')}</Button>
-                <Button onClick={() => navigate('/sign-in')}>{t('SignIn')}</Button>
+                <Button onClick={() => navigate(RoutePath.SIGN_UP)}>{t('SignUp')}</Button>
+                <Button onClick={() => navigate(RoutePath.LOGIN)}>{t('SignIn')}</Button>
               </div>
             )}
           </>

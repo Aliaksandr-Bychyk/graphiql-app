@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
+import { RoutePath } from '@/routes/route';
 
 type Props = {
   children: ReactNode;
@@ -13,11 +14,11 @@ const ProtectedRoute = ({ children, isReg }: Props) => {
 
   useEffect(() => {
     if (userStore?.user) {
-      navigate('/editor');
+      navigate(RoutePath.EDITOR);
       return;
     }
 
-    isReg ? navigate('/sign-up') : navigate('/sign-in');
+    isReg ? navigate(RoutePath.SIGN_UP) : navigate(RoutePath.LOGIN);
   }, [userStore?.user, navigate, isReg]);
 
   return <>{children}</>;

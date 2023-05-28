@@ -9,6 +9,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '@/context/AuthContext';
 import { FirebaseError } from 'firebase/app';
 import './AuthRegPage.scss';
+import { RoutePath } from '@/routes/route';
+
 export interface IFormInputs {
   root: string;
   email: string;
@@ -28,7 +30,7 @@ const AuthRegPage: FC = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const isReg = location.pathname === '/sign-up';
+  const isReg = location.pathname === RoutePath.SIGN_UP;
   const { t } = useTranslation();
 
   const userStore = useUserAuth();
@@ -36,7 +38,7 @@ const AuthRegPage: FC = () => {
   const loginUser = async (data: IFormInputs) => {
     try {
       await userStore?.signIn(data.email, data.password);
-      navigate('/editor');
+      navigate(RoutePath.EDITOR);
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError('root', { type: 'manual', message: error.code });
@@ -47,7 +49,7 @@ const AuthRegPage: FC = () => {
   const regUser = async (data: IFormInputs) => {
     try {
       await userStore?.createUser(data.email, data.password);
-      navigate('/editor');
+      navigate(RoutePath.EDITOR);
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError('root', { type: 'manual', message: error.code });
@@ -86,14 +88,14 @@ const AuthRegPage: FC = () => {
           {isReg ? (
             <div className="auth-reg__question">
               {t('authQuestion')}&nbsp;
-              <span className="auth-reg__link" onClick={() => navigate('/sign-in')}>
+              <span className="auth-reg__link" onClick={() => navigate(RoutePath.LOGIN)}>
                 {t('SignIn')}
               </span>
             </div>
           ) : (
             <div className="auth-reg__question">
               {t('regQuestion')}&nbsp;
-              <span className="auth-reg__link" onClick={() => navigate('/sign-up')}>
+              <span className="auth-reg__link" onClick={() => navigate(RoutePath.SIGN_UP)}>
                 {t('SignUp')}
               </span>
             </div>

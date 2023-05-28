@@ -6,8 +6,8 @@
 
   &__container {
     display: grid;
-    grid-template-columns: 23% 50% 24%;
-    gap: 15px;
+    grid-template-columns: 24% 50% 24%;
+    gap: 1%;
   }
 
   &__documentation,
@@ -22,6 +22,7 @@
   background-color: $editor-color;
 
   &__header {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,5 +44,11 @@
     &__container {
       grid-template-columns: 100%;
     }
+  }
+}
+
+@media screen and (max-width: $media-tab) {
+  .response__title {
+    font-size: 16px;
   }
 }

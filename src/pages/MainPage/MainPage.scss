@@ -5,21 +5,30 @@
   background-color: $main-bg-color;
 
   &__container {
-    display: grid;
-    grid-template-columns: 24% 50% 24%;
+    display: flex;
     gap: 1%;
+  }
+
+  &__editors {
+    flex: 2;
+  }
+  &__documentation {
+    flex: 1;
   }
 
   &__documentation,
   &__editors {
     background-color: $editor-color;
     padding-bottom: 20px;
+    transition: 0.4s all ease;
   }
 }
 
 .response {
+  flex: 1;
   padding: 0 40px;
   background-color: $editor-color;
+  transition: 0.4s all ease;
 
   &__header {
     margin-bottom: 20px;
